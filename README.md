@@ -1,1 +1,1 @@
-# IdlePoring
+Desenvolvimento do projeto baseado no jogo Idle Poring.
