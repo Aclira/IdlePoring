@@ -1,23 +1,58 @@
 public class Hero extends Personagem{
-	//Tentei inserir novos atributos e passar para o construtor, mas não deu certo porque não to sabendo como fazer.
-
-	/*,  int exp, int vital, int destreza, int agil, int sorte, int intlg
+	public String classe;
 	public int exp;
-	public int vital;
-	public int destreza;
+	public int forca;
+	public int vit;
+	public int dest;
 	public int agil;
 	public int sorte;
-	public int intlg;
-	*/
-	public Hero(String nome, String raca, int hp, int mp){
+	public int intelig;
+
+
+	public Hero(int forca, int vit, int dest, int agil, int sorte, int intelig, int exp, String classe, String nome, String raca, int hp, int mp){
+    
 		super(nome, raca, hp, mp);
-		/*this.exp = exp;
-		this.vital = vital;
-		this.destreza = destreza;
+		this.classe = classe;
+		this.exp = exp;
+		this.forca = forca;
+		this.vit = vit;
+		this.dest = dest;
 		this.agil = agil;
 		this.sorte = sorte;
-		this.intlg = intlg;*/
+		this.intelig = intelig;
 	}
+
+	public int getForca(){
+		return this.forca;
+	}
+
+	public int getVit(){
+		return this.vit;
+	}
+
+	public int getDest(){
+		return this.dest;
+	}
+
+	public int getAgil(){
+		return this.agil;
+	}
+
+	public int getSorte(){
+		return this.sorte;
+	}
+
+	public int getIntelig(){
+		return this.intelig;
+	}
+
+	public String getClasse(){
+		return this.classe;
+	}
+
+	public int getExp(){
+		return this.exp;
+	}	
 
 	public String getNome(){
 		return super.getNome();
@@ -35,29 +70,10 @@ public class Hero extends Personagem{
 		return super.getMp();
 	}
 
-/*
-	public int getExp(int exp){
-		return this.exp;
-	}
-
-	public int getVital(int vital){
-		return this.vital;
-	}
-
-	public int getDestreza(int destreza){
-		return this.destreza;
-	}
-
-	public int getAgil(int agil){
-		return this.agil;
-	}
-
-	public int getSorte(int sorte){
-		return this.sorte;
-	}
-
-	public int getIntlg(int intlg){
-		return this.intlg;
-	}
-*/
+	/*
+	3 metodos para ser implementados:
+	Atributos
+	Bolsa
+	Habilidade
+	*/
 }
