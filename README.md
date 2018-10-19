@@ -1,5 +1,4 @@
 Desenvolvimento do projeto baseado no jogo Idle Poring.
-https://repl.it/@Acza/Idle
 
 Links importantes sobre o jogo:
 http://idleporing.wikia.com
