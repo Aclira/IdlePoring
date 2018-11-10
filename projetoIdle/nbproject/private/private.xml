@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/aczal/OneDrive/Documentos/NetBeansProjects/idle/src/idle/personagem/Monstro.java</file>
-            <file>file:/C:/Users/aczal/OneDrive/Documentos/NetBeansProjects/idle/src/idle/elementos/Raca.java</file>
-            <file>file:/C:/Users/aczal/OneDrive/Documentos/NetBeansProjects/idle/src/idle/personagem/Personagem.java</file>
-            <file>file:/C:/Users/aczal/OneDrive/Documentos/NetBeansProjects/idle/src/idle/personagem/Pet.java</file>
-            <file>file:/C:/Users/aczal/OneDrive/Documentos/NetBeansProjects/idle/src/idle/src/Play.java</file>
+            <file>file:/C:/Users/aczal/git/IdlePoring/projetoIdle/src/idle/personagem/Personagem.java</file>
+            <file>file:/C:/Users/aczal/git/IdlePoring/projetoIdle/src/idle/elementos/Fase.java</file>
+            <file>file:/C:/Users/aczal/git/IdlePoring/projetoIdle/src/idle/elementos/Tarefa.java</file>
+            <file>file:/C:/Users/aczal/git/IdlePoring/projetoIdle/src/idle/personagem/Inimigo.java</file>
+            <file>file:/C:/Users/aczal/git/IdlePoring/projetoIdle/src/idle/elementos/Item.java</file>
+            <file>file:/C:/Users/aczal/git/IdlePoring/projetoIdle/src/idle/src/Play.java</file>
         </group>
     </open-files>
 </project-private>

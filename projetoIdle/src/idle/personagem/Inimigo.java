@@ -1,9 +1,23 @@
 package idle.personagem;
 
-public class Inimigo extends Personagem{
-	public boolean Boss;
+import idle.elementos.Raca;
 
-	public Inimigo(String nome, String raca, int hp, int mp){
-		//super(nome, raca, hp, mp);
-	}
+public class Inimigo extends Monstro{
+    private boolean Boss;
+    
+    public Inimigo(String nome, Raca raca){
+        super(nome,raca);
+    }
+    
+    public Inimigo(Raca raca){
+        super(raca);
+    }
+    
+    public boolean getBoss() {
+        return Boss;
+    }
+
+    public void setBoss(boolean Boss) {
+        this.Boss = Boss;
+    }
 }
