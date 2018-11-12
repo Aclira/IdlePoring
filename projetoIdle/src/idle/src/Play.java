@@ -1,16 +1,18 @@
 package idle.src;
 
+import idle.elementos.Batalha;
+import idle.elementos.Classe;
 import idle.elementos.Raca;
-import idle.personagem.Pet;
+import idle.personagem.Heroi;
+import idle.personagem.Inimigo;
 
 public class Play {
     public static void main(String args[]){
-	Raca mago = new Raca("Mago");
-        Pet lira = new Pet("Aczinha", mago);
-	System.out.println(lira);
-        lira.setNivel(50);
-        System.out.println(lira);
-        lira.setNivel(-5);
-        System.out.println(lira);
+	Classe mago = new Classe("Mago");
+        Raca retardado = new Raca("Arqueiro");
+        Heroi heroi1 = new Heroi("Acza", mago);
+        Inimigo inimigo1 = new Inimigo("Andre", retardado);
+        
+        Batalha porrada = new Batalha(heroi1, inimigo1);
     }
 }

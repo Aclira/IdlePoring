@@ -2,7 +2,8 @@ package idle.personagem;
 
 public abstract class Personagem {
 	private String nome;
-	private int hp, nivel, defesa, esquiva, atq, atqsp;
+	private int nivel, defesa, esquiva, atq, atqsp;
+        public int hp;
 	public static final int HP_MAX = 100000;
 	public static final int BASE_MAX = 1000;
 	public static final int NIVEL_MAX = 100;

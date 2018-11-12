@@ -2,12 +2,7 @@ package idle.personagem;
 import idle.elementos.Classe;
 
 public class Heroi extends Personagem{
-    private int exp;
-    private int poder;
-    private int dest;
-    private int agil;
-    private int sorte;
-    private int intelig;
+    private int exp, poder, dest, agil, sorte, intelig, critico;
     private Classe classe;
 
     public Heroi(Classe classe){
@@ -86,6 +81,7 @@ public class Heroi extends Personagem{
             this.intelig = intelig;
     }
 
+
     public Classe getClasse() {
         return classe;
     }
@@ -93,4 +89,12 @@ public class Heroi extends Personagem{
     public void setClasse(Classe classe) {
         this.classe = classe;
     }
+    
+    public void ataque(Heroi heroi, Inimigo inimigo){
+        heroi.hp = heroi.hp - (inimigo.getAtq() - heroi.getDefesa());    
+        //heroi.setHp(heroi.getDefesa() - inimigo.getAtq());
+            
+            System.out.println("Hp do heroi " + heroi.getHp());
+        }
+    
 }

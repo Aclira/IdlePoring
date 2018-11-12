@@ -20,4 +20,10 @@ public class Inimigo extends Monstro{
     public void setBoss(boolean Boss) {
         this.Boss = Boss;
     }
+    
+    public void ataque(Inimigo inimigo, Heroi heroi){
+        inimigo.hp = inimigo.hp - (heroi.getAtq() - inimigo.getDefesa());
+        //inimigo.setHp(inimigo.getDefesa() - heroi.getAtq());     
+        System.out.println("Hp do inimigo " + inimigo.getHp());
+    }
 }
