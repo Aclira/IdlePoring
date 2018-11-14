@@ -1,3 +1,4 @@
+//Apenas atributos e metódos getters e setters feitos
 package idle.personagem;
 
 import idle.elementos.Raca;
@@ -23,6 +24,7 @@ public abstract class Monstro extends Personagem {
 		return this.raca;
 	}
         
+        //Polimorfismo da função de printar
         @Override
         public String toString() {
             return super.toString() + raca.toString();

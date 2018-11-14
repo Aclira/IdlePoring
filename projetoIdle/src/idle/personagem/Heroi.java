@@ -31,6 +31,7 @@ public class Heroi extends Personagem{
         return exp;
     }
 
+    //Todos setters com condição de atribuição
     public void setExp(int exp) {
         if(this.limiteBase(exp))
             this.exp = exp;
@@ -90,6 +91,7 @@ public class Heroi extends Personagem{
         this.classe = classe;
     }
     
+    //Ação ataque do heroi definido como método
     public void ataque(Heroi heroi, Inimigo inimigo){
         heroi.hp = heroi.hp - (inimigo.getAtq() - heroi.getDefesa());    
         //heroi.setHp(heroi.getDefesa() - inimigo.getAtq());

@@ -1,3 +1,5 @@
+//Apenas atributos e metódos getters e setters feitos
+
 package idle.personagem;
 
 import idle.personagem.Monstro;

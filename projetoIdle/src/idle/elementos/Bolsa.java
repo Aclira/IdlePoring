@@ -1,4 +1,4 @@
-
+//Nada feito
 package idle.elementos;
 
 public class Bolsa {

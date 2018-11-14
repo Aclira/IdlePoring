@@ -1,15 +1,16 @@
 package idle.elementos;
 
-//import java.util.Timer;
-//import java.util.TimerTask;
 import idle.personagem.Heroi;
 import idle.personagem.Inimigo;
 
 public class Batalha{
 	public String chat;
 	public boolean desafiarBoss;
-        Heroi heroi;
-        Inimigo inimigo;
+        //Atributo do tipo heroi(objeto)
+        private Heroi heroi;
+        //Atributo do tipo inimigo(objeto)
+        private Inimigo inimigo;
+        
         
         public Batalha(Heroi heroi, Inimigo inimigo){
             heroi.setHp(50);
@@ -24,9 +25,9 @@ public class Batalha{
             while(heroi.getHp() > 0 && inimigo.getHp()>0){
                 heroi.ataque(heroi, inimigo);
                 inimigo.ataque(inimigo, heroi);
+
             }
 
         }
-        
-        
+
 }

@@ -1,4 +1,4 @@
-
+//Apenas atributos e metódos getters e setters feitos
 package idle.elementos;
 
 public class Classe {

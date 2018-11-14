@@ -21,6 +21,7 @@ public class Inimigo extends Monstro{
         this.Boss = Boss;
     }
     
+    //Ação ataque do inimigo definido como método
     public void ataque(Inimigo inimigo, Heroi heroi){
         inimigo.hp = inimigo.hp - (heroi.getAtq() - inimigo.getDefesa());
         //inimigo.setHp(inimigo.getDefesa() - heroi.getAtq());     

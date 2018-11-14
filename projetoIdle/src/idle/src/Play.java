@@ -1,5 +1,7 @@
 package idle.src;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import idle.elementos.Batalha;
 import idle.elementos.Classe;
 import idle.elementos.Raca;
