@@ -2,29 +2,43 @@ package idle.personagem;
 
 import idle.elementos.Raca;
 
-public class Inimigo extends Monstro{
-    private boolean Boss;
-    
-    public Inimigo(String nome, Raca raca){
-        super(nome,raca);
-    }
+public class Inimigo extends Personagem {
+    private Raca raca;
+    private boolean boss;
     
     public Inimigo(Raca raca){
-        super(raca);
+        this.raca = raca;
+        this.boss = false;
+    }
+    
+    public Inimigo(String nome, Raca raca){
+        super(nome);
+        this.raca = (raca);
+        this.boss = false;
     }
     
     public boolean getBoss() {
-        return Boss;
+        return this.boss;
     }
 
-    public void setBoss(boolean Boss) {
-        this.Boss = Boss;
+    public void setBoss(boolean boss) {
+        this.boss = boss;
     }
     
-    //Ação ataque do inimigo definido como método
-    public void ataque(Inimigo inimigo, Heroi heroi){
-        inimigo.hp = inimigo.hp - (heroi.getAtq() - inimigo.getDefesa());
-        //inimigo.setHp(inimigo.getDefesa() - heroi.getAtq());     
+    public Raca getRaca() {
+        return this.raca;
+    }
+    
+    public void setRaca(Raca raca) {
+        this.raca = raca;
+    }
+    
+    // Ação de batalha do inimigo
+    
+    public void batalha(Inimigo inimigo, Heroi heroi){
+        int dano = (heroi.getAtaque()*heroi.getInteligencia() + heroi.getSorte())/inimigo.getDefesa();
+        int hp = inimigo.getHp() - dano;
+        inimigo.setHp(hp); 
         System.out.println("Hp do inimigo " + inimigo.getHp());
     }
 }
