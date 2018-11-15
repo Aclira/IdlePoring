@@ -14,17 +14,17 @@ public class Batalha{
         
         public Batalha(Heroi heroi, Inimigo inimigo){
             heroi.setHp(50);
-            heroi.setAtq(20);
+            heroi.setAtaque(20);
             heroi.setDefesa(15);
             
             inimigo.setHp(50);
-            inimigo.setAtq(20);
+            inimigo.setAtaque(20);
             inimigo.setDefesa(10);
   
             
             while(heroi.getHp() > 0 && inimigo.getHp()>0){
-                heroi.ataque(heroi, inimigo);
-                inimigo.ataque(inimigo, heroi);
+                heroi.batalha(inimigo, heroi);
+                inimigo.batalha(inimigo, heroi);
 
             }
 
