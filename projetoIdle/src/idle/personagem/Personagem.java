@@ -35,15 +35,15 @@ public abstract class Personagem {
     // Construtor com parâmetro "nome": exemplo de sobrecarga de métodos
     
     public Personagem(String nome) {
-		this.nome = "";
+	this.nome = nome;
 		
-		this.nivel = 1;
-		this.hp = nivel*1000;
+	this.nivel = 1;
+	this.hp = nivel*100;
 		
-		this.ataque = nivel*100;
-		this.defesa = nivel*100;
-		this.inteligencia = nivel*10;
-		this.sorte = 0;	// Definido como 0 por que deve receber um valor aleatório calculado na hora da criação	
+	this.ataque = nivel*100;
+	this.defesa = nivel*100;
+	this.inteligencia = nivel*10;
+	this.sorte = 0;	// Definido como 0 por que deve receber um valor aleatório calculado na hora da criação	
 	}
 
 	// Método limiteNivel: responsável por verificar se o valor atribuído à variável nível é válido
@@ -87,7 +87,7 @@ public abstract class Personagem {
     }
         
     public void setHp(int hp) {
-	this.hp = this.hp + hp;
+	this.hp = hp;
     }
 	
     // Atributo ataque

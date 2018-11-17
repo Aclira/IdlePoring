@@ -15,7 +15,6 @@ public class Heroi extends Personagem{
         this.classe = classe;
         this.exp = 0;
     }
-       
 
     public int getExp() {
         return this.exp;
@@ -31,14 +30,5 @@ public class Heroi extends Personagem{
 
     public void setClasse(Classe classe) {
         this.classe = classe;
-    }
-    
-    // Ação de batalha do herói
-    
-    public void batalha(Inimigo inimigo, Heroi heroi){
-        int dano = (inimigo.getAtaque()*inimigo.getInteligencia() + inimigo.getSorte())/heroi.getDefesa();
-        int hp = heroi.getHp() - dano;
-        heroi.setHp(hp); 
-        System.out.println("Hp do herói " + heroi.getHp());
     }
 }

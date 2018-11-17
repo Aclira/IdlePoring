@@ -32,13 +32,4 @@ public class Inimigo extends Personagem {
     public void setRaca(Raca raca) {
         this.raca = raca;
     }
-    
-    // Ação de batalha do inimigo
-    
-    public void batalha(Inimigo inimigo, Heroi heroi){
-        int dano = (heroi.getAtaque()*heroi.getInteligencia() + heroi.getSorte())/inimigo.getDefesa();
-        int hp = inimigo.getHp() - dano;
-        inimigo.setHp(hp); 
-        System.out.println("Hp do inimigo " + inimigo.getHp());
-    }
 }

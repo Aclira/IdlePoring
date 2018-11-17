@@ -1,7 +1,5 @@
 package idle.src;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import idle.elementos.Batalha;
 import idle.elementos.Classe;
 import idle.elementos.Raca;
@@ -12,9 +10,9 @@ public class Play {
     public static void main(String args[]){
 	Classe mago = new Classe("Mago");
         Raca retardado = new Raca("Arqueiro");
-        Heroi heroi1 = new Heroi("Acza", mago);
-        Inimigo inimigo1 = new Inimigo("Andre", retardado);
+        Heroi heroi = new Heroi("Acza", mago);
+        Inimigo inimigo = new Inimigo("Andre", retardado);
         
-        Batalha porrada = new Batalha(heroi1, inimigo1);
+        Batalha porrada = new Batalha(heroi, inimigo);
     }
 }
