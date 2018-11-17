@@ -1,16 +1,17 @@
 package idle.personagem;
-import idle.elementos.Classe;
 
-public class Heroi extends Personagem{
+import idle.elementos.Profissao;
+
+public class Heroi extends Personagem {
     private int exp;
-    private Classe classe;
+    private Profissao classe;
 
-    public Heroi(Classe classe){
+    public Heroi(Profissao classe){
         this.classe = classe;
         this.exp = 0;
     }
 
-    public Heroi(String nome,Classe classe){
+    public Heroi(String nome, Profissao classe){
         super(nome);
         this.classe = classe;
         this.exp = 0;
@@ -24,11 +25,11 @@ public class Heroi extends Personagem{
         this.exp = exp;
     }
 
-    public Classe getClasse() {
+    public Profissao getClasse() {
         return this.classe;
     }
 
-    public void setClasse(Classe classe) {
+    public void setClasse(Profissao classe) {
         this.classe = classe;
     }
 }

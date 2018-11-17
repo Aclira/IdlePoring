@@ -30,7 +30,7 @@ public abstract class Personagem {
 	this.defesa = nivel*100;
 	this.inteligencia = nivel*10;
 	this.sorte = 0;	// Definido como 0 por que deve receber um valor aleatório calculado na hora da criação
-}
+    }
     
     // Construtor com parâmetro "nome": exemplo de sobrecarga de métodos
     
@@ -44,16 +44,16 @@ public abstract class Personagem {
 	this.defesa = nivel*100;
 	this.inteligencia = nivel*10;
 	this.sorte = 0;	// Definido como 0 por que deve receber um valor aleatório calculado na hora da criação	
-	}
+    }
 
-	// Método limiteNivel: responsável por verificar se o valor atribuído à variável nível é válido
+    // Método limiteNivel: responsável por verificar se o valor atribuído à variável nível é válido
 
-	public boolean limiteNivel(int valor) {
-		if(valor >= 0 && valor <= this.NIVEL_MAX)
-			return true;
-		else
-			return false;
-	}
+    public boolean limiteNivel(int valor) {
+        if(valor >= 0 && valor <= this.NIVEL_MAX)
+            return true;
+        else
+            return false;
+    }
     
     // Definição de getters e setters em função das variáveis privadas
     
