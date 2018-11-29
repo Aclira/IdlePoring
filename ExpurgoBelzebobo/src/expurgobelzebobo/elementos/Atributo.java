@@ -2,11 +2,17 @@
 
 package expurgobelzebobo.elementos;
 
-public abstract class Atributo {
+public class Atributo {
     
-    private final String distancia = "distancia"; // Profissão Arqueiro, Arma Arco, Traje jaqueta
-    private final String fisico = "fisico";       // Profissão Guerreiro, Arma Espada, Traje Armadura
-    private final String magico = "magico";       // Profissão Mago, Arma Cajado, Traje Tunica
+    private final String distancia; // Profissão Arqueiro, Arma Arco, Traje jaqueta
+    private final String fisico;       // Profissão Guerreiro, Arma Espada, Traje Armadura
+    private final String magico;       // Profissão Mago, Arma Cajado, Traje Tunica
+    
+    public Atributo() {
+        this.distancia = "distancia";
+        this.fisico = "fisico";
+        this.magico = "magico";        
+    }
 
     // Getters para leitura dos atributos
 

@@ -1,21 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package expurgobelzebobo.principal;
 
-/**
- *
- * @author user
- */
+import expurgobelzebobo.elementos.classes.Mago;
+
 public class Play {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Mago mago = new Mago();
+        
+        
+        System.out.println("Nome: " + mago.getNome());
+        System.out.println("Atributo: " + mago.getAtributo());
+        System.out.println("Resistência: " + mago.getResistencia());
+        System.out.println("Fraqueza: " + mago.getFraqueza());
+        System.out.println("Fator Ataque: " + mago.getFatorAtaque());
+        System.out.println("Fator Defesa: " + mago.getFatorDefesa());
+        System.out.println("Fator Inteligência: " + mago.getFatorInteligencia());
+        
+        
     }
     
 }

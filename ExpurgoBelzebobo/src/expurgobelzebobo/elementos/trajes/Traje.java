@@ -6,7 +6,7 @@ import expurgobelzebobo.elementos.Atributo;
 
 public abstract class Traje {
     
-    protected static Atributo atb; // Carrega a lista de atributos
+    protected static Atributo atb = new Atributo(); // Carrega a lista de atributos
     
     // Características do traje
     

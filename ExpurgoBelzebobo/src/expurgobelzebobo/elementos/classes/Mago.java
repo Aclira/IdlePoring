@@ -8,7 +8,7 @@ package expurgobelzebobo.elementos.classes;
 public class Mago extends Classe {
     
     public Mago() {
-        super("Mago", atb.getMagico(), atb.getDistancia(), atb.getFisico(), 0, 0, 10/100);
+        super("Mago", atb.getMagico(), atb.getDistancia(), atb.getFisico(), 0.0, 0.0, 0.1);
     }
     
 }
