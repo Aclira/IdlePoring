@@ -1,6 +1,5 @@
 package idle.personagem;
 import idle.elementos.Classe;
-//falta o import aqui (da classe Classe)
 
 public class Heroi extends Personagem{
     private int exp;
