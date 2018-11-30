@@ -1,96 +1,39 @@
 package idle.personagem;
+<<<<<<< HEAD
 import idle.elementos.Classe;
+=======
+>>>>>>> 0ca24bdffd2174d1a84ed119e2c80a2955a5f0cf
 
-public class Heroi extends Personagem{
+import idle.elementos.Profissao;
+
+public class Heroi extends Personagem {
     private int exp;
-    private int poder;
-    private int dest;
-    private int agil;
-    private int sorte;
-    private int intelig;
-    private Classe classe;
+    private Profissao classe;
 
-    public Heroi(Classe classe){
+    public Heroi(Profissao classe){
         this.classe = classe;
         this.exp = 0;
-        this.poder = 0;
-        this.dest = 0;
-        this.agil = 0;
-        this.sorte = 0;
-        this.intelig = 0;
     }
 
-    public Heroi(String nome,Classe classe){
+    public Heroi(String nome, Profissao classe){
         super(nome);
         this.classe = classe;
         this.exp = 0;
-        this.poder = 0;
-        this.dest = 0;
-        this.agil = 0;
-        this.sorte = 0;
-        this.intelig = 0;
     }
-       
 
     public int getExp() {
-        return exp;
+        return this.exp;
     }
 
     public void setExp(int exp) {
-        if(this.limiteBase(exp))
-            this.exp = exp;
+        this.exp = exp;
     }
 
-    public int getPoder() {
-        return poder;
+    public Profissao getClasse() {
+        return this.classe;
     }
 
-    public void setPoder(int poder) {
-        if(this.limiteBase(poder))
-            this.poder = poder;
-    }
-
-    public int getDest() {
-        return dest;
-    }
-
-    public void setDest(int dest) {
-        if(this.limiteBase(dest))
-            this.dest = dest;
-    }
-
-    public int getAgil() {
-        return agil;
-    }
-
-    public void setAgil(int agil) {
-        if(this.limiteBase(agil))
-            this.agil = agil;
-    }
-
-    public int getSorte() {
-        return sorte;
-    }
-
-    public void setSorte(int sorte) {
-        if(this.limiteBase(sorte))
-            this.sorte = sorte;
-    }
-
-    public int getIntelig() {
-        return intelig;
-    }
-
-    public void setIntelig(int intelig) {
-        if(this.limiteBase(intelig))
-            this.intelig = intelig;
-    }
-
-    public Classe getClasse() {
-        return classe;
-    }
-
-    public void setClasse(Classe classe) {
+    public void setClasse(Profissao classe) {
         this.classe = classe;
     }
 }
