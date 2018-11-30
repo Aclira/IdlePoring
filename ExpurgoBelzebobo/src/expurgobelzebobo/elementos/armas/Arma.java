@@ -5,7 +5,6 @@ package expurgobelzebobo.elementos.armas;
 import expurgobelzebobo.elementos.Atributo;
 
 public abstract class Arma {
-    
     protected static Atributo atb = new Atributo(); // Carrega a lista de atributos
     
     // Características da arma
