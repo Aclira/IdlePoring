@@ -1,6 +1,7 @@
 package expurgobelzebobo.principal;
 
 import expurgobelzebobo.elementos.classes.Mago;
+import expurgobelzebobo.elementos.racas.Planta;
 
 public class Play {
 
@@ -8,6 +9,7 @@ public class Play {
         
         Mago mago = new Mago();
         
+        Planta planta = new Planta();
         
         System.out.println("Nome: " + mago.getNome());
         System.out.println("Atributo: " + mago.getAtributo());

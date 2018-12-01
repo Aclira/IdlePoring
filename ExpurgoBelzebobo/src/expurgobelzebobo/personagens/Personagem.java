@@ -29,6 +29,16 @@ public abstract class Personagem {
         this.inteligencia = nivel*10;
         this.sorte = 0; // Definido como zero por que receberá um valor aleatório no momento da criação
     }
+    public Personagem(String nome){
+        this.nome = nome;
+        this.nivel = 1;
+        this.hp = nivel*1000;
+        this.ataque = nivel*100;
+        this.defesa = nivel*100;
+        this.inteligencia = nivel*10;
+        this.sorte = 0;
+    }
+    
     
     // Getters e setters para leitura e manipulação das características
     
