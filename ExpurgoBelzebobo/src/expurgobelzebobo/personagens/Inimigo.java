@@ -10,8 +10,13 @@ public class Inimigo extends Personagem {
     
     // Características do inimigo
     
-    private Raca raca;    // Raça do inimigo
+    private final Raca raca;    // Raça do inimigo
     private boolean boss; // Determina se o inimigo é um chefe de fase
+    
+    // Variáveis auxiliares para buscar uma habilidade de batalha
+    
+    private int numHabilidades; // Armazena o número de habilidades
+    private int habUtilizada;   // Armazena a habilidade utilizada
     
     // Constutor para criação do inimigo
     
@@ -30,11 +35,18 @@ public class Inimigo extends Personagem {
     public boolean isBoss() {
         return boss;
     }
+
+    // Getter para leitura da habilidade utilizada
+    
+    public int getHabUtilizada() {
+        return habUtilizada;
+    }
+    
+    // Setter para manipulação da variável boss
     
     public void setBoss(boolean boss) {
         this.boss = boss;
     }
-    
     
     // Método de ataque
     
@@ -54,15 +66,25 @@ public class Inimigo extends Personagem {
         String traje = heroi.getTraje().getAtributo();           // Atributo do traje do herói
         double defesa = heroi.getDefesa();                       // Defesa do inimigo
         
-        // Calcula a defesa do herói para o ataque atual de acordo seus atributos e a habilidade do inimigo
+        // Determina a habilidade que será utilizada no próximo ataque
         
-        if(raca.getAtributo().equals(resistencia) || raca.getAtributo().equals(traje)) {
+        numHabilidades = getRaca().numeroDeHabilidades();               // Armazena o número de habilidades
+        habUtilizada = gerador.nextInt(numHabilidades);                 // Sorteia uma habilidade da lista
+        String atributoHab = getRaca().atributoHabiliade(habUtilizada); // Armazena o atributo da habilidade
+        
+        // Calcula a defesa do herói para o ataque atual de acordo seus atributos e a habilidade do inimigo
+        // Bônus ou prejuízo de 30%
+        
+        if(atributoHab.equals(resistencia) || atributoHab.equals(traje)) {
             defesa = defesa + 0.30*defesa;
-        } else if(raca.getNomeHabilidade().equals(fraqueza)) {
+        } else if(atributoHab.equals(fraqueza)) {
             defesa = defesa - 0.30*defesa;
         }
         
-        // Calcula o dano infligido ao herói considerando o fator de erro, o fator de crítico e o fator de sorte
+        // Calcula o dano infligido ao herói considerando o fator erro, o fator crítico e o fator sorte
+        // Fator Sorte: Normal = 5, Boss = 10
+        // Fator Crítico: Normal = 2, Boss = 3
+        // Boss não erra ataque
         
         if(boss) {
             fatorSorte = gerador.nextInt(10);
@@ -75,10 +97,14 @@ public class Inimigo extends Personagem {
         if(erro && boss == false) {
             danoGerado = danoGerado*fatorErro;
         } else if(critico) {
+            if(boss) {
+                fatorCritico = 3;
+            }
+            
             danoGerado = danoGerado*fatorCritico;
         }
         
-        heroi.setHp(heroi.getHp() - 1);//danoGerado); // Seta o novo hp do herói
+        heroi.setHp(heroi.getHp() - danoGerado); // Seta o novo hp do herói
         return danoGerado;                       // Retorna o dano gerado
     }
 }

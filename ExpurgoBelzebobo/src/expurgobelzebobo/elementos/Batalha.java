@@ -57,13 +57,17 @@ public class Batalha {
     
     private void AtaqueInimigo(Heroi heroi, Inimigo inimigo, boolean fErro, boolean fCritico, Random gerador) {
             
-        int danoInfligido = (int)inimigo.ataque(heroi, fErro, fCritico); // Dano infligido ao herói
-            
+        int danoInfligido = (int)inimigo.ataque(heroi, fErro, fCritico);        // Dano infligido ao herói
+        int habUtilizada = inimigo.getHabUtilizada();                           // ID da habilidade utilizada
+        String nomeHabilidade = inimigo.getRaca().nomeHabilidade(habUtilizada); // Nome da habilidade do inimigo
+        
         try {
             Thread.sleep(gerador.nextInt(3000)); // Aguarda até 3 segundos antes de exibir as mensagens
         } catch(InterruptedException x) { }
-            
-        System.out.print(inimigo.getNome() + " usa " + inimigo.getRaca().getNomeHabilidade());
+        
+        
+        
+        System.out.print(inimigo.getNome() + " usa " + nomeHabilidade);
         System.out.println(": " + tipoAtaque(inimigo, fErro, fCritico));
         System.out.println("Dano infligido: " + danoInfligido + ".");
             

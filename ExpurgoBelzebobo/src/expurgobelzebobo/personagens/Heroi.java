@@ -82,10 +82,10 @@ public class Heroi extends Personagem {
         
         Random gerador = new Random(); // Cria o objeto gerador, para gerar números aleatórios
         
-        int fatorCritico = 2;                 // Multiplicador de crítico
-        int fatorErro = 0;                    // Mutiplicador de erro
+        int fatorCritico = 2;                // Multiplicador de crítico
+        int fatorErro = 0;                   // Mutiplicador de erro
         int fatorSorte = gerador.nextInt(5); // Calcula a sorte do herói neste ataque, um número entre 0 e 10
-        double danoGerado;                    // Dano gerado pelo herói neste ataque
+        double danoGerado;                   // Dano gerado pelo herói neste ataque
         
         // Variáveis auxiliares para armazenar os atributos do inimigo
         
