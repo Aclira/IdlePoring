@@ -12,7 +12,6 @@ public abstract class Personagem {
     private int ataque;       // Pontos de ataque do pesonagem
     private int defesa;       // Pontos de defesa do personagem
     private int inteligencia; // Pontos de inteligência do personagem
-    private final int sorte;  // Pontos de sorte do personagem
     
     // Nivel máximo de personagem
     
@@ -27,7 +26,6 @@ public abstract class Personagem {
         this.ataque = nivel*100;
         this.defesa = nivel*100;
         this.inteligencia = nivel*10;
-        this.sorte = 0; // Definido como zero por que receberá um valor aleatório no momento da criação
     }
     
     // Construtor para criação do Inimigo
@@ -38,7 +36,6 @@ public abstract class Personagem {
         this.ataque = nivel*100;
         this.defesa = nivel*100;
         this.inteligencia = nivel*10;
-        this.sorte = 0; // Definido como zero por que receberá um valor aleatório no momento da criação
     }
     
     // Getters e setters para leitura e manipulação das características
@@ -109,12 +106,6 @@ public abstract class Personagem {
 
     public void setInteligencia(int inteligencia) {
         this.inteligencia = inteligencia;
-    }
-    
-    // Atributo sorte
-
-    public int getSorte() {
-        return sorte;
-    }    
+    }   
     
 }

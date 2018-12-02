@@ -5,15 +5,23 @@ package expurgobelzebobo.elementos;
 import expurgobelzebobo.personagens.Heroi;
 import expurgobelzebobo.personagens.Inimigo;
 
+import java.util.Random;
+
 public class Batalha {
     
-    public Batalha(Heroi heroi, Inimigo inimigo){
+    public Batalha(Heroi heroi, Inimigo inimigo) {
+        
+        // Objeto para gerar numeros aleatórios entre 0 e 2
+        
+        Random gerador = new Random();
         
         // Variáveis auxiliares do sistema de batalha
         
-        int ataque;    // Determina o personagem que irá atacar
-        double dano;   // Recebe temporariamente o dano infligido
-        double defesa; // Recebe a defesa do personagem após o cálcula do bônus/prejuízo por atributo
+        int proximoAtaque;     // Determina o personagem que irá atacar
+        int fatorCritico;      // Determina se o personagem errou o ataque, acertou ou fez um ataque crítico
+        double dano;           // Recebe temporariamente o dano infligido
+        double defesa;         // Recebe a defesa do personagem após o cálculo do bônus/prejuízo por atributo
+        String mensagemAtaque; // Recebe a mensagem exibida sobre o ataque, determinada pelo fatorCritico
         
         // Variáveis auxiliares para receber a resistência e a fraqueza do herói
         
@@ -34,18 +42,20 @@ public class Batalha {
         // Determina qual personagem irá atacar primeiro
         
         if(inimigo.getBoss() == true) {
-            ataque = 0;
+            proximoAtaque = 0;
         } else {
-            ataque = 1;
+            proximoAtaque = 1;
         }
         
         // Executa a batalha
         
         while(heroi.getHp() > 0 && inimigo.getHp() > 0) {
             
+            fatorCritico = gerador.nextInt(3); // Gera um número aleatório entre 0 e 2
+            
             // Ataque do inimigo
             
-            if(ataque == 0) {
+            if(proximoAtaque == 0) {
                 
                 // Calcula o fator de alteração na defesa do herói
                 
@@ -65,24 +75,36 @@ public class Batalha {
                     }
                 }
                 
+                // Seta a mensagem apropriada para o tipo de ataque
+                
+                if(fatorCritico == 0) {
+                    mensagemAtaque = "Errou!";
+                } else {
+                    if(fatorCritico == 1) {
+                        mensagemAtaque = "Normal.";
+                    } else {
+                        mensagemAtaque = "Crítico!";
+                    }
+                }
+                
                 // Calcula o dano recebido e seta o novo hp do herói
                 
-                dano = (inimigo.getAtaque()*inimigo.getInteligencia() + inimigo.getSorte())/defesa;
+                dano = (inimigo.getAtaque()*inimigo.getInteligencia()*fatorCritico)/defesa;
                 heroi.setHp(heroi.getHp() - (int)dano);
                 
                 // Informa o nome do atacante, o dano infligido e o hp dos personagens
                 
-                System.out.println(inimigo.getNome() + " ataca.");
+                System.out.println(inimigo.getNome() + " ataca: " + mensagemAtaque);
                 System.out.println("Dano infligido: " + (int)dano + ".");
                 System.out.println("HP de " + heroi.getNome() + ": " + heroi.getHp() + ".");
                 System.out.println("HP de " + inimigo.getNome() + ": " + inimigo.getHp() + ".\n");
                 
-                ataque = 1; // Na próxima iteração, será a vez do heró atacar
+                proximoAtaque = 1; // Na próxima iteração, será a vez do heró atacar
             }
             
             // Ataque do herói
             
-            if(ataque == 1) {
+            if(proximoAtaque == 1) {
                 
                 // Calcula o fator de alteração na defesa do inimigo
                 
@@ -101,21 +123,35 @@ public class Batalha {
                     }
                 }
                 
+                // Seta a mensagem apropriada para o tipo de ataque
+                
+                if(fatorCritico == 0) {
+                    mensagemAtaque = "Errou!";
+                } else {
+                    if(fatorCritico == 1) {
+                        mensagemAtaque = "Normal.";
+                    } else {
+                        mensagemAtaque = "Crítico!";
+                    }
+                }
+                
                 // Calcula o dano recebido e seta o novo hp do inimigo
                 
-                dano = (heroi.getAtaque()*heroi.getInteligencia() + heroi.getSorte())/defesa;
+                dano = (heroi.getAtaque()*heroi.getInteligencia()*fatorCritico)/defesa;
                 inimigo.setHp(inimigo.getHp() - (int)dano);
                 
                 // Informa o nome do atacante, o dano infligido e o hp dos personagens
                 
-                System.out.println(heroi.getNome() + " ataca.");
+                System.out.println(heroi.getNome() + " ataca: " + mensagemAtaque);
                 System.out.println("Dano infligido: " + (int)dano + ".");
                 System.out.println("HP de " + heroi.getNome() + ": " + heroi.getHp() + ".");
                 System.out.println("HP de " + inimigo.getNome() + ": " + inimigo.getHp() + ".\n");
                 
-                ataque = 0; // Na próxima iteração, será a vez do inimigo atacar
+                proximoAtaque = 0; // Na próxima iteração, será a vez do inimigo atacar
             }           
         }
+        
+        // Exibe mensagens relativas ao resultado da batalha
         
         if(heroi.getHp() > 0) {
             System.out.println(heroi.getNome() + " venceu!");
@@ -125,6 +161,5 @@ public class Batalha {
             System.out.println(heroi.getNome() + " foi derrotado(a)!");
             System.out.println("Fim de jogo!");
         }
-    }
-    
+    }    
 }
