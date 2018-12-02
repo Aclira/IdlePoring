@@ -34,4 +34,30 @@ public abstract class Item {
         this.liberado = liberado;
     }
     
+    // Getters para leitura das características do item
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getFatorAtaque() {
+        return fatorAtaque;
+    }
+
+    public double getFatorDefesa() {
+        return fatorDefesa;
+    }
+
+    public double getFatorHp() {
+        return fatorHp;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public boolean isLiberado() {
+        return liberado;
+    }
+        
 }

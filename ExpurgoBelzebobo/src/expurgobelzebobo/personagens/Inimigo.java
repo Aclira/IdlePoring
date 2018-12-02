@@ -10,7 +10,7 @@ public class Inimigo extends Personagem {
     
     private final Raca raca;    // Raça do inimigo
     private final boolean boss; // Determina se o inimigo é um chefe de fase
-        
+    
     // Constutor para criação do inimigo
     
     public Inimigo(Raca raca, boolean boss, int nivel) {        

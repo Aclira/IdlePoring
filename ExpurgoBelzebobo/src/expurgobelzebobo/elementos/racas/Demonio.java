@@ -7,7 +7,7 @@ package expurgobelzebobo.elementos.racas;
 
 public class Demonio extends Raca {
    
-    public Demonio(String nome){
-        super(nome, atb.getGeral(), atb.getGeral(), atb.getNenhum(), "Ataque Demoniaco");
+    public Demonio(){
+        super("Demônio", atb.getGeral(), atb.getGeral(), atb.getNenhum(), "Ataque Demoniaco");
     }
 }
