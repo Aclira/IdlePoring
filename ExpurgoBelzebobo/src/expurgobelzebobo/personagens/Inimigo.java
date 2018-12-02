@@ -10,8 +10,8 @@ public class Inimigo extends Personagem {
     
     // Características do inimigo
     
-    private final Raca raca;    // Raça do inimigo
-    private final boolean boss; // Determina se o inimigo é um chefe de fase
+    private Raca raca;    // Raça do inimigo
+    private boolean boss; // Determina se o inimigo é um chefe de fase
     
     // Constutor para criação do inimigo
     
@@ -30,6 +30,11 @@ public class Inimigo extends Personagem {
     public boolean isBoss() {
         return boss;
     }
+    
+    public void setBoss(boolean boss) {
+        this.boss = boss;
+    }
+    
     
     // Método de ataque
     
@@ -73,7 +78,7 @@ public class Inimigo extends Personagem {
             danoGerado = danoGerado*fatorCritico;
         }
         
-        heroi.setHp(heroi.getHp() - danoGerado); // Seta o novo hp do herói
+        heroi.setHp(heroi.getHp() - 1);//danoGerado); // Seta o novo hp do herói
         return danoGerado;                       // Retorna o dano gerado
     }
 }
