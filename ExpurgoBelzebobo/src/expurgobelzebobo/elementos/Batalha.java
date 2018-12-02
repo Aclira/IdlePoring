@@ -18,7 +18,7 @@ public class Batalha {
         // Variáveis auxiliares do sistema de batalha
         
         int proximoAtaque;     // Determina o personagem que irá atacar
-        int fatorCritico;      // Determina se o personagem errou o ataque, acertou ou fez um ataque crítico
+        int ataqueCritico;     // Recebe o multiplicador do ataque: 0 = errado, 1 = normal, 2 = crítico
         double dano;           // Recebe temporariamente o dano infligido
         double defesa;         // Recebe a defesa do personagem após o cálculo do bônus/prejuízo por atributo
         String mensagemAtaque; // Recebe a mensagem exibida sobre o ataque, determinada pelo fatorCritico
@@ -51,11 +51,38 @@ public class Batalha {
         
         while(heroi.getHp() > 0 && inimigo.getHp() > 0) {
             
-            fatorCritico = gerador.nextInt(3); // Gera um número aleatório entre 0 e 2
-            
             // Ataque do inimigo
             
-            if(proximoAtaque == 0) {
+            if(proximoAtaque == 0 && inimigo.getHp() > 0) {
+                
+                // Variáveis auxiliares: determinam a chance de ataque crítico e a correção do dano gerado
+                
+                int fcritico = gerador.nextInt(100) + 1; // gera números aleatórios entre 1 e 100
+                int correcao = gerador.nextInt(5) + 1;   // Gera números aleatórios entre 1 e 10
+                
+                // Calcula o fator crítico
+            
+                if(fcritico == 1) {
+                    ataqueCritico = 2; // Ataque crítico: 1% de chance de acontecer
+                } else {
+                    if(fcritico > 1 && fcritico < 21) {
+                        ataqueCritico = 0; // Ataque errado: 19% de chance de acontecer
+                    } else {
+                        ataqueCritico = 1; // Ataque normal: 80% de chance de acontecer
+                    }
+                }
+                
+                // Seta a mensagem apropriada para o tipo de ataque
+                
+                if(ataqueCritico == 0) {
+                    mensagemAtaque = "Errou!";
+                } else {
+                    if(ataqueCritico == 1) {
+                        mensagemAtaque = "Normal.";
+                    } else {
+                        mensagemAtaque = "Crítico!";
+                    }
+                }
                 
                 // Calcula o fator de alteração na defesa do herói
                 
@@ -75,21 +102,9 @@ public class Batalha {
                     }
                 }
                 
-                // Seta a mensagem apropriada para o tipo de ataque
-                
-                if(fatorCritico == 0) {
-                    mensagemAtaque = "Errou!";
-                } else {
-                    if(fatorCritico == 1) {
-                        mensagemAtaque = "Normal.";
-                    } else {
-                        mensagemAtaque = "Crítico!";
-                    }
-                }
-                
                 // Calcula o dano recebido e seta o novo hp do herói
                 
-                dano = (inimigo.getAtaque()*inimigo.getInteligencia()*fatorCritico)/defesa;
+                dano = ((inimigo.getAtaque()*inimigo.getInteligencia()/defesa) + correcao)*ataqueCritico;
                 heroi.setHp(heroi.getHp() - (int)dano);
                 
                 // Informa o nome do atacante, o dano infligido e o hp dos personagens
@@ -99,12 +114,41 @@ public class Batalha {
                 System.out.println("HP de " + heroi.getNome() + ": " + heroi.getHp() + ".");
                 System.out.println("HP de " + inimigo.getNome() + ": " + inimigo.getHp() + ".\n");
                 
-                proximoAtaque = 1; // Na próxima iteração, será a vez do heró atacar
+                proximoAtaque = 1; // Na próxima iteração, será a vez do herói atacar
             }
             
             // Ataque do herói
             
-            if(proximoAtaque == 1) {
+            if(proximoAtaque == 1 && heroi.getHp() > 0) {
+                
+                // Variáveis auxiliares: determinam a chance de ataque crítico e a correção do dano gerado
+                
+                int fcritico = gerador.nextInt(100) + 1; // gera números aleatórios entre 1 e 100
+                int correcao = gerador.nextInt(5) + 1;   // Gera números aleatórios entre 1 e 5
+                
+                // Calcula o fator crítico
+            
+                if(fcritico == 1) {
+                    ataqueCritico = 2; // Ataque crítico: 1% de chance de acontecer
+                } else {
+                    if(fcritico > 1 && fcritico < 21) {
+                        ataqueCritico = 0; // Ataque errado: 19% de chance de acontecer
+                    } else {
+                        ataqueCritico = 1; // Ataque normal: 80% de chance de acontecer
+                    }
+                }
+                
+                // Seta a mensagem apropriada para o tipo de ataque
+                
+                if(ataqueCritico == 0) {
+                    mensagemAtaque = "Errou!";
+                } else {
+                    if(ataqueCritico == 1) {
+                        mensagemAtaque = "Normal.";
+                    } else {
+                        mensagemAtaque = "Crítico!";
+                    }
+                }
                 
                 // Calcula o fator de alteração na defesa do inimigo
                 
@@ -123,21 +167,9 @@ public class Batalha {
                     }
                 }
                 
-                // Seta a mensagem apropriada para o tipo de ataque
-                
-                if(fatorCritico == 0) {
-                    mensagemAtaque = "Errou!";
-                } else {
-                    if(fatorCritico == 1) {
-                        mensagemAtaque = "Normal.";
-                    } else {
-                        mensagemAtaque = "Crítico!";
-                    }
-                }
-                
                 // Calcula o dano recebido e seta o novo hp do inimigo
                 
-                dano = (heroi.getAtaque()*heroi.getInteligencia()*fatorCritico)/defesa;
+                dano = ((heroi.getAtaque()*heroi.getInteligencia()/defesa) + correcao)*ataqueCritico;
                 inimigo.setHp(inimigo.getHp() - (int)dano);
                 
                 // Informa o nome do atacante, o dano infligido e o hp dos personagens

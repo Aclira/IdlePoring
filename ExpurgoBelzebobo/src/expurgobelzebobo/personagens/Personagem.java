@@ -17,22 +17,12 @@ public abstract class Personagem {
     
     private final int NIVEL_MAX = 10;
     
-    // Construtor para criação do Herói
+    // Construtor para criação do personagem
 
     public Personagem(String nome, int nivel) {
         this.nome = nome;
         this.nivel = nivel;
-        this.hp = nivel*1000;
-        this.ataque = nivel*100;
-        this.defesa = nivel*100;
-        this.inteligencia = nivel*10;
-    }
-    
-    // Construtor para criação do Inimigo
-    
-    public Personagem(int nivel) {
-        this.nivel = nivel;
-        this.hp = nivel*1000;
+        this.hp = nivel*100;
         this.ataque = nivel*100;
         this.defesa = nivel*100;
         this.inteligencia = nivel*10;

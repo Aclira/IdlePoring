@@ -14,7 +14,7 @@ public class Inimigo extends Personagem {
     // Constutor para criação do inimigo
     
     public Inimigo(Raca raca, boolean boss, int nivel) {        
-        super(nivel);
+        super(raca.getNome(), nivel);
         this.boss = boss;
         this.raca = raca;
     }
