@@ -25,7 +25,9 @@ public class Play {
         Inimigo inimigo = new Inimigo(capeta, true, 1);
         inimigo.setNome("José");
         
-        Batalha pancadaria = new Batalha(heroi, inimigo);
+        while(heroi.getHp() > 0 && inimigo.getHp() > 0) {
+            Batalha pancadaria = new Batalha(heroi, inimigo);
+        }
     }
     
 }

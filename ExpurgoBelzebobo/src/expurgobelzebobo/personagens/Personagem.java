@@ -8,10 +8,10 @@ public abstract class Personagem {
     
     private String nome;      // Nome do personagem
     private int nivel;        // Nivel do personagem
-    private int hp;           // Pontos de vida do personagem
     private int ataque;       // Pontos de ataque do pesonagem
     private int defesa;       // Pontos de defesa do personagem
     private int inteligencia; // Pontos de inteligência do personagem
+    private double hp;        // Pontos de vida do personagem
     
     // Nivel máximo de personagem
     
@@ -54,20 +54,6 @@ public abstract class Personagem {
         }        
     }
             
-    // Atributo hp
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        if(hp < 0) {
-            this.hp = 0;
-        } else {
-            this.hp = hp;
-        }       
-    }
-    
     // Atributo ataque
 
     public int getAtaque() {
@@ -97,5 +83,18 @@ public abstract class Personagem {
     public void setInteligencia(int inteligencia) {
         this.inteligencia = inteligencia;
     }   
-    
+        
+    // Atributo hp
+
+    public double getHp() {
+        return hp;
+    }
+
+    public void setHp(double hp) {
+        if(hp < 0) {
+            this.hp = 0.0;
+        } else {
+            this.hp = hp;
+        }       
+    }
 }

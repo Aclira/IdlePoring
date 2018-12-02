@@ -6,6 +6,8 @@ import expurgobelzebobo.elementos.classes.Classe;
 import expurgobelzebobo.elementos.armas.Arma;
 import expurgobelzebobo.elementos.trajes.Traje;
 
+import java.util.Random;
+
 public class Heroi extends Personagem {
     
     // Características do herói
@@ -74,4 +76,42 @@ public class Heroi extends Personagem {
         }        
     }
     
+    // Método de ataque
+    
+    public double ataque(Inimigo inimigo, boolean erro, boolean critico) {
+        
+        Random gerador = new Random(); // Cria o objeto gerador, para gerar números aleatórios
+        
+        int fatorCritico = 2;                 // Multiplicador de crítico
+        int fatorErro = 0;                    // Mutiplicador de erro
+        int fatorSorte = gerador.nextInt(5); // Calcula a sorte do herói neste ataque, um número entre 0 e 10
+        double danoGerado;                    // Dano gerado pelo herói neste ataque
+        
+        // Variáveis auxiliares para armazenar os atributos do inimigo
+        
+        String resistencia = inimigo.getRaca().getResistencia(); // Atributo ao qual o inimigo é resistente
+        String fraqueza = inimigo.getRaca().getFraqueza();       // Atributo ao qual o inimigo é vulnerável
+        double defesa = inimigo.getDefesa();                     // Defesa do inimigo
+        
+        // Calcula a defesa do inimigo para o ataque atual de acordo seus atributos e a arma do herói
+        
+        if(arma.getAtributo().equals(resistencia)) {
+            defesa = defesa + 0.30*defesa;
+        } else if(arma.getAtributo().equals(fraqueza)) {
+            defesa = defesa - 0.30*defesa;
+        }
+        
+        // Calcula o dano infligido ao inimigo considerando o fator de erro e o fator de crítico
+        
+        danoGerado = (getAtaque()*getInteligencia()/defesa) + fatorSorte;
+        
+        if(erro) {
+            danoGerado = danoGerado*fatorErro;
+        } else if(critico) {
+            danoGerado = danoGerado*fatorCritico;
+        }
+        
+        inimigo.setHp(inimigo.getHp() - danoGerado); // Seta o novo hp do inimigo
+        return danoGerado;                           // Retorna o dano gerado
+    }
 }

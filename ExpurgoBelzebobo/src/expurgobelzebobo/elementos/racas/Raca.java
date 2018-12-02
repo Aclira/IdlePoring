@@ -32,7 +32,7 @@ public abstract class Raca {
         return nome;
     }
 
-    public String gerAtributo() {
+    public String getAtributo() {
         return atributo;
     }
     
