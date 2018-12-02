@@ -10,11 +10,11 @@ import expurgobelzebobo.elementos.armas.Cajado;
 import expurgobelzebobo.elementos.trajes.Tunica;
 
 import expurgobelzebobo.elementos.Batalha;
+import expurgobelzebobo.elementos.Fase;
 
 public class Play {
 
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) { 
         Mago mago = new Mago();
         Demonio capeta = new Demonio();
         
@@ -24,10 +24,21 @@ public class Play {
         Heroi heroi = new Heroi(mago, cajado, tunica, "Acza");
         Inimigo inimigo = new Inimigo(capeta, true, 1);
         inimigo.setNome("José");
+        int nivel = 1;
         
-        while(heroi.getHp() > 0 && inimigo.getHp() > 0) {
-            Batalha pancadaria = new Batalha(heroi, inimigo);
+        while(nivel<4){
+            while(heroi.getHp() > 0 && inimigo.getHp() > 0) {
+                Fase fase = new Fase(nivel,true, heroi, inimigo);
+                System.out.println(fase.getNome());        
+                fase.batalhas(nivel);
+            
+                if(heroi.getHp() > 0 && inimigo.getHp() == 0){
+                    System.out.println("HEROI PASSOU DE FASE");
+                    nivel++;
+                    heroi.setHp(nivel*100);
+                    inimigo.setHp(nivel*100);
+                }
+            }
         }
     }
-    
 }
