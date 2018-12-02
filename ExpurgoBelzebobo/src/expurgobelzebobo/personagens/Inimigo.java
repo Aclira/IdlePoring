@@ -70,14 +70,10 @@ public class Inimigo extends Personagem {
         if(erro && boss == false) {
             danoGerado = danoGerado*fatorErro;
         } else if(critico) {
-            if(boss) {
-                fatorCritico = 3;
-            }
-            
             danoGerado = danoGerado*fatorCritico;
         }
         
         heroi.setHp(heroi.getHp() - danoGerado); // Seta o novo hp do herói
         return danoGerado;                       // Retorna o dano gerado
-    }    
+    }
 }
