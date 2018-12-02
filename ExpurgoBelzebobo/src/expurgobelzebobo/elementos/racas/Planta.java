@@ -1,13 +1,20 @@
 // Contém da definição de Planta.
-// Habilidade do tipo distância.
-// Resistente a físico.
+// Resistente a distância.
 // Vulnerável a mágico.
 
 package expurgobelzebobo.elementos.racas;
 
 public class Planta extends Raca {
-   
+    
+    // Cria as habilidades da raça
+    
+    private void habilidades() {
+        novaHabilidade("Chicote de Hera", atb.getFisico());
+        novaHabilidade("Folha Navalha", atb.getDistancia());
+    }
+    
     public Planta(){
-        super("Planta", atb.getDistancia(), atb.getFisico(), atb.getMagico(), "Chicote de Hera");
+        super("Planta", atb.getDistancia(), atb.getMagico());
+        habilidades();
     }
 }

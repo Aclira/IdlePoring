@@ -28,6 +28,5 @@ public class Play {
         while(heroi.getHp() > 0 && inimigo.getHp() > 0) {
             Batalha pancadaria = new Batalha(heroi, inimigo);
         }
-    }
-    
+    }    
 }
