@@ -8,6 +8,6 @@ package expurgobelzebobo.elementos.racas;
 public class Demonio extends Raca {
    
     public Demonio(){
-        super("Demônio", atb.getGeral(), atb.getGeral(), atb.getNenhum(), "Ataque Demoniaco");
+        super("Demônio", "geral", "geral", "nenhum", "Ataque Demoniaco");
     }
 }

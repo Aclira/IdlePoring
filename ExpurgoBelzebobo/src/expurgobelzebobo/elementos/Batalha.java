@@ -9,110 +9,111 @@ import java.util.Random;
 
 public class Batalha {
     
-    private class AtaqueInimigo {
+    // Método que calcula a probabilidade do personagem errar o ataque
+    // Chance de ocorrer: 20%
+    
+    private boolean fatorErro(Random gerador) {
+        return gerador.nextInt(101) < 21;
+    }
+    
+    // Método que calcula a probabilidade do personagem efetuar um ataque crítico
+    // Chance para herói/inimigo: 10%
+    
+    private boolean fatorCritico(Random gerador) {
+        return gerador.nextInt(101) < 11;
+    }
+    
+    // Métodos que setam uma mensagem informando o tipo de ataque fetuado pelo personagem
+    // Errado, Normal ou Crítico
+    // O boss nunca erra o ataque
+    
+    // Versão do inimigo
+    
+    private String tipoAtaque(Inimigo inimigo, boolean fatorErro, boolean fatorCritico) {
         
-        private AtaqueInimigo(Heroi heroi, Inimigo inimigo, boolean fErro, boolean fCritico, Random gerador) {
-            
-            int danoInfligido = (int)inimigo.ataque(heroi, fErro, fCritico); // Dano infligido ao herói
-            
-            // Seta uma mensagem informando o tipo de ataque
-            
-            String mensagemAtaque;
-            
-            if(fErro && inimigo.isBoss() == false) {
-                mensagemAtaque = "Errou!";
-            } else if(fCritico) {
-                mensagemAtaque = "Crítico!";
-            } else {
-                mensagemAtaque = "Normal";
-            }
-            
-            // Aguarda um período de até 3 segundos antes de exibir as mensagens
-            
-            try {
-                Thread.sleep(gerador.nextInt(3000));
-            } catch(InterruptedException x) { }
-            
-            // Mensagens relativas ao ataque
-            
-            System.out.print(inimigo.getNome() + " usa " + inimigo.getRaca().getNomeHabilidade());
-            System.out.println(": " + mensagemAtaque);
-            System.out.println("Dano infligido: " + danoInfligido + ".");
-            
-            System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
-            System.out.print(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp());
-            System.out.println("\n");
+        if(fatorErro && inimigo.isBoss() == false) {
+            return "Errou!";
+        } else if(fatorCritico) {
+            return "Crítico!";
+        } else {
+            return "Normal.";
         }
     }
     
-    private class AtaqueHeroi {
+    // Versão do herói
+    
+    private String tipoAtaque(boolean fatorErro, boolean fatorCritico) {
         
-        private AtaqueHeroi(Heroi heroi, Inimigo inimigo, boolean fErro, boolean fCritico, Random gerador) {
-            
-            int danoInfligido = (int)heroi.ataque(inimigo, fErro, fCritico); // Dano infligido ao inimigo
-            
-            // Seta uma mensagem informando o tipo de ataque
-            
-            String mensagemAtaque;
-            
-            if(fErro) {
-                mensagemAtaque = "Errou!";
-            } else if(fCritico) {
-                mensagemAtaque = "Crítico!";
-            } else {
-                mensagemAtaque = "Normal";
-            }
-            
-            // Aguarda um período de até 3 segundos antes de exibir as mensagens
-            
-            try {
-                Thread.sleep(gerador.nextInt(3000));
-            } catch(InterruptedException x) { }
-            
-            System.out.print(heroi.getNome() + " usa " + heroi.getArma().getNome());
-            System.out.println(": " + mensagemAtaque);
-            System.out.println("Dano infligido: " + danoInfligido + ".");
-            
-            System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
-            System.out.print(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp());
-            System.out.println("\n");
+        if(fatorErro) {
+            return "Errou!";
+        } else if(fatorCritico) {
+            return "Crítico!";
+        } else {
+            return "Normal.";
         }
     }
+    
+    // Chama o método de ataque do inimigo e gera mensagens pertinentes ao ataque
+    
+    private void AtaqueInimigo(Heroi heroi, Inimigo inimigo, boolean fErro, boolean fCritico, Random gerador) {
+            
+        int danoInfligido = (int)inimigo.ataque(heroi, fErro, fCritico); // Dano infligido ao herói
+            
+        try {
+            Thread.sleep(gerador.nextInt(3000)); // Aguarda até 3 segundos antes de exibir as mensagens
+        } catch(InterruptedException x) { }
+            
+        System.out.print(inimigo.getNome() + " usa " + inimigo.getRaca().getNomeHabilidade());
+        System.out.println(": " + tipoAtaque(inimigo, fErro, fCritico));
+        System.out.println("Dano infligido: " + danoInfligido + ".");
+            
+        System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
+        System.out.print(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp());
+        System.out.println("\n");
+    }
+    
+    // Chama o método de ataque do herói e gera mensagens pertinentes ao ataque
+    
+    private void AtaqueHeroi(Heroi heroi, Inimigo inimigo, boolean fErro, boolean fCritico, Random gerador) {
+            
+        int danoInfligido = (int)heroi.ataque(inimigo, fErro, fCritico); // Dano infligido ao inimigo
+            
+        try {
+            Thread.sleep(gerador.nextInt(3000)); // Aguarda até 3 segundos antes de exibir as mensagens
+        } catch(InterruptedException x) { }
+            
+        System.out.print(heroi.getNome() + " usa " + heroi.getArma().getNome());
+        System.out.println(": " + tipoAtaque(fErro, fCritico));
+        System.out.println("Dano infligido: " + danoInfligido + ".");
+            
+        System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
+        System.out.print(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp());
+        System.out.println("\n");
+    }
+    
+    // Método principal
     
     public Batalha(Heroi heroi, Inimigo inimigo) {
         
         Random gerador = new Random(); // Cria o objeto gerador para gerar números aleatórios
         
-        // Variáveis auxiliares para armazenar os fatores de erro de de ataque crítico
-        
-        boolean fatorErro;
-        boolean fatorCritico;
-        
-        // Exibe mensagens relativas ao ataque
-        
         if(inimigo.isBoss()) {
             
-            fatorErro = gerador.nextBoolean(); // Calcula o fator de erro do inimigo
-            fatorCritico = gerador.nextBoolean(); // Calcula o fator de crítico do inimigo
-            AtaqueInimigo ataqueInimigo = new AtaqueInimigo(heroi, inimigo, fatorErro, fatorCritico, gerador);
+            // Caso o inimigo um boss, ele é o primeiro a atacar
+            
+            AtaqueInimigo(heroi, inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
             
             if(heroi.getHp() > 0) {
-                
-                fatorErro = gerador.nextBoolean(); // Calcula o fator de erro do herói
-                fatorCritico = gerador.nextBoolean(); // Calcula o fator de crítico do herói
-                AtaqueHeroi ataqueHeroi = new AtaqueHeroi(heroi,inimigo, fatorErro, fatorCritico, gerador);
+                AtaqueHeroi(heroi,inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
             }
         } else {
             
-            fatorErro = gerador.nextBoolean(); // Calcula o fator de erro do herói
-            fatorCritico = gerador.nextBoolean(); // Calcula o fator de crítico do herói
-            AtaqueHeroi ataqueHeroi = new AtaqueHeroi(heroi, inimigo, fatorErro, fatorCritico, gerador);
+            // Caso o inimigo não seja um boss, o herói é o primeiro a atacar
+            
+            AtaqueHeroi(heroi, inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
             
             if(heroi.getHp() > 0) {
-                
-                fatorErro = gerador.nextBoolean(); // Calcula o fator de erro do inimigo
-                fatorCritico = gerador.nextBoolean(); // Calcula o fator de crítico do inimigo
-                AtaqueInimigo ataqueInimigo = new AtaqueInimigo(heroi,inimigo, fatorErro, fatorCritico, gerador);
+                AtaqueInimigo(heroi,inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
             }
         }
         
