@@ -6,12 +6,12 @@ public abstract class Item {
     
     // Características do item
     
-    private final String nome;       // Nome do item
+    private final String nome;        // Nome do item
     private final double fatorAtaque; // Bonus de ataque concedido ao personagem
     private final double fatorDefesa; // Bonus de defesa concedido ao personagem
     private final double fatorHp;     // recuperação de HP concedida ao personagem
-    private int nivel;               // Nível do item
-    private boolean liberado;        // Liberdade para utilização
+    private int nivel;                // Nível do item
+    private boolean liberado;         // Liberdade para utilização
     
     // Construtor para criação do item
 

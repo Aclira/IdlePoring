@@ -1,33 +1,41 @@
+// Contém a definição genérica de Raça
+
 package expurgobelzebobo.elementos.racas;
 
 import expurgobelzebobo.elementos.Atributo;
-import expurgobelzebobo.elementos.Habilidade;
 
-public class Raca { 
-    private String nome;
-    private String habilidade;
-    private String resistencia;
-    private String fraqueza;
+public abstract class Raca { 
     
-    static Atributo atb = new Atributo();
-    static Habilidade habil = new Habilidade();
+    protected static Atributo atb = new Atributo(); // Carrega a lista de atributos
     
+    // Características da raça
     
-    public Raca(String nome, String habilidade, String resistencia, String fraqueza){
+    private final String nome;           // Nome da raça
+    private final String atributo;       // Atributo da habilidade raça
+    private final String resistencia;    // Atributo ao qual a raça é resistente
+    private final String fraqueza;       // Atributo ao qual a raça é vulnerável
+    private final String nomeHabilidade; // Nome da habilidade da raça    
+    
+    // Construtor para criação da raça
+    
+    public Raca(String nome, String atributo, String resistencia, String fraqueza, String nomeHabilidade) {
         this.nome = nome;
-        this.habilidade = habilidade;
+        this.atributo = atributo;
         this.resistencia = resistencia;
         this.fraqueza = fraqueza;
+        this.nomeHabilidade = nomeHabilidade;
     }
+    
+    // Getters para leitura das características da raça
 
     public String getNome() {
         return nome;
     }
 
-    public String getHabilidade() {
-        return habilidade;
+    public String gerAtributo() {
+        return atributo;
     }
-
+    
     public String getResistencia() {
         return resistencia;
     }
@@ -35,4 +43,9 @@ public class Raca {
     public String getFraqueza() {
         return fraqueza;
     }
+
+    public String getNomeHabilidade() {
+        return nomeHabilidade;
+    }
+        
 }

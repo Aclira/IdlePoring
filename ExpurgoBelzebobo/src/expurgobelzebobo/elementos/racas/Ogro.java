@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// Contém da definição de Ogro.
+// Habilidade do tipo físico.
+// Resistente a mágico.
+// Vulnerável a distância.
+
 package expurgobelzebobo.elementos.racas;
 
-/**
- *
- * @author aczal
- */
-public class Ogro {
-    
+public class Ogro extends Raca {
+   
+    public Ogro(){
+        super("Ogro", atb.getFisico(), atb.getMagico(), atb.getDistancia(), "Pancada de Porrete");
+    }
 }

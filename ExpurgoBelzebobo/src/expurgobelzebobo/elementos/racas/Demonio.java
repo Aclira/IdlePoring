@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// Contém da definição de Ogro.
+// Habilidade do tipo geral.
+// Resistente a geral.
+// Vulnerável a nenhum.
+
 package expurgobelzebobo.elementos.racas;
 
-/**
- *
- * @author aczal
- */
-public class Demonio {
-    
+public class Demonio extends Raca {
+   
+    public Demonio(String nome){
+        super(nome, atb.getGeral(), atb.getGeral(), atb.getNenhum(), "Ataque Demoniaco");
+    }
 }

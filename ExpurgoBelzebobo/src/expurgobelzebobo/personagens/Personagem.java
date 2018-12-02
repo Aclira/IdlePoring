@@ -7,7 +7,7 @@ public abstract class Personagem {
     // Características do personagem
     
     private String nome;      // Nome do personagem
-    private int nivel;
+    private int nivel;        // Nivel do personagem
     private int hp;           // Pontos de vida do personagem
     private int ataque;       // Pontos de ataque do pesonagem
     private int defesa;       // Pontos de defesa do personagem
@@ -18,7 +18,7 @@ public abstract class Personagem {
     
     private final int NIVEL_MAX = 10;
     
-    // Construtor para criação do personagem
+    // Construtor para criação do Herói
 
     public Personagem(String nome, int nivel) {
         this.nome = nome;
@@ -29,16 +29,17 @@ public abstract class Personagem {
         this.inteligencia = nivel*10;
         this.sorte = 0; // Definido como zero por que receberá um valor aleatório no momento da criação
     }
-    public Personagem(String nome){
-        this.nome = nome;
-        this.nivel = 1;
+    
+    // Construtor para criação do Inimigo
+    
+    public Personagem(int nivel) {
+        this.nivel = nivel;
         this.hp = nivel*1000;
         this.ataque = nivel*100;
         this.defesa = nivel*100;
         this.inteligencia = nivel*10;
-        this.sorte = 0;
+        this.sorte = 0; // Definido como zero por que receberá um valor aleatório no momento da criação
     }
-    
     
     // Getters e setters para leitura e manipulação das características
     
@@ -59,7 +60,7 @@ public abstract class Personagem {
     }
 
     public void setNivel(int nivel) {
-        if(nivel > NIVEL_MAX) {
+        if(nivel >= NIVEL_MAX) {
             this.nivel = NIVEL_MAX;
         } else {
             this.nivel = nivel;

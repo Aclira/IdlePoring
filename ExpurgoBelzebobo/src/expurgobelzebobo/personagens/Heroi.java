@@ -13,7 +13,7 @@ public class Heroi extends Personagem {
     private Classe classe;
     private Arma arma;
     private Traje traje;
-    private int experiencia;
+    private int experiencia = 0;
     
     // Experiência máxima do herói
     
@@ -21,12 +21,11 @@ public class Heroi extends Personagem {
     
     // Construtor para criação do herói
 
-    public Heroi(Classe classe, Arma arma, Traje traje, int experiencia, String nome) {
-        super(nome, experiencia/100 + 1);
+    public Heroi(Classe classe, Arma arma, Traje traje, String nome) {
+        super(nome, 1);
         this.classe = classe;
         this.arma = arma;
         this.traje = traje;
-        this.experiencia = experiencia;
     }
     
     // Getters e Setters para leitura/manipulação das características
@@ -68,11 +67,11 @@ public class Heroi extends Personagem {
     }
 
     public void setExperiencia(int experiencia) {
-        if(experiencia > EXP_MAX) {
+        if(this.experiencia + experiencia >= EXP_MAX) {
             this.experiencia = EXP_MAX;
         } else {
-            this.experiencia = experiencia;
+            this.experiencia = this.experiencia + experiencia;
         }        
     }
-        
+    
 }

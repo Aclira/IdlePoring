@@ -10,10 +10,10 @@ public abstract class Traje {
     
     // Características do traje
     
-    private final String nome;       // Nome da arma
-    private final String atributo;   // Recebe o atributo da arma
+    private final String nome;        // Nome da arma
+    private final String atributo;    // Recebe o atributo da arma
     private final double fatorDefesa; // Bônus de defesa concedido ao personagem de classe com mesmo atributo
-    private boolean liberado;        // Liberadade para utilização
+    private boolean liberado;         // Liberadade para utilização
     
     // Construtor para criação do traje
 

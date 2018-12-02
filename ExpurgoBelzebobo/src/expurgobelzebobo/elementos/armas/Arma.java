@@ -9,10 +9,10 @@ public abstract class Arma {
     
     // Características da arma
     
-    private final String nome;       // Nome da arma
-    private final String atributo;   // Recebe o atributo da arma
+    private final String nome;        // Nome da arma
+    private final String atributo;    // Recebe o atributo da arma
     private final double fatorAtaque; // Bônus de ataque da arma
-    private boolean liberado;        // Liberadade para utilização
+    private boolean liberado;         // Liberadade para utilização
     
     // Construtor para criação da arma
 
