@@ -5,6 +5,7 @@ package expurgobelzebobo.personagens;
 import expurgobelzebobo.elementos.Bolsa;
 import expurgobelzebobo.elementos.classes.Classe;
 import expurgobelzebobo.elementos.armas.Arma;
+import expurgobelzebobo.elementos.itens.Item;
 import expurgobelzebobo.elementos.trajes.Traje;
 
 import java.util.Random;
@@ -70,12 +71,91 @@ public class Heroi extends Personagem {
         return experiencia;
     }
 
-    public void setExperiencia(int experiencia) {
+    private void setExperiencia(int experiencia) {
         if(this.experiencia + experiencia >= EXP_MAX) {
             this.experiencia = EXP_MAX;
         } else {
             this.experiencia = this.experiencia + experiencia;
         }        
+    }
+    
+    // Método para subir de nível
+    
+    public void subirNivel(int experiencia) {
+        
+        setExperiencia(experiencia); // Adiciona a experiência recebida à experiência atual
+        
+        int nivel = (this.experiencia + 100)/100; // Calcula o nível para a experiência atual
+        
+        // Calcula a mudança nos atributos, caso o nível para a experiência atual seja maior que o nível atual
+        
+        if(nivel > getNivel()) {
+            
+            setNivel(nivel);
+            setAtaque(getAtaque() + CONST_BAS);
+            setDefesa(getDefesa() + CONST_BAS);
+            setInteligencia(getInteligencia() + (CONST_BAS/10));
+            setHp(getHp() + CONST_BAS);
+        }
+    }
+    
+    // Método para calcular os bônus de arma e traje
+    
+    private void bonusEquipamento(Arma arma, Traje traje) {
+        
+        int nivel = getNivel();       // Recebe o nivel atual do herói
+        int ataque = nivel*CONST_BAS; // Cacula o ataque base
+        int defesa = nivel*CONST_BAS; // Calcula a defesa base
+        
+        // Compara o atributo da classe com o atributo da arma para calcular o bônus de ataque
+        
+        if(classe.getAtributo().equals(arma.getAtributo())) {
+            setAtaque((int)(ataque + ataque*arma.getFatorAtaque()));
+        }
+        
+        // Compara o atributo da classe com o atributo do traje para calcular o bônus de defesa
+        
+        if(classe.getAtributo().equals(traje.getAtributo())) {
+            setDefesa((int)(defesa + defesa*traje.getFatorDefesa()));
+        }
+    }
+    
+    // Método para trocar arma
+    
+    public void trocarArma(Arma arma) {
+        
+        Arma armaAtual = this.arma;     // Armazena temporariamente a arma atual
+        this.arma = arma;               // Substitui a arma atual pela nova
+        bolsa.removerArma(arma);        // Remove a nova arma da bolsa
+        bolsa.adicionarArma(armaAtual); // Adiciona a arma atual a bolsa
+        
+        bonusEquipamento(this.arma, this.traje); // Calcula o bônus para o aquipamento atual
+    }
+    
+    // Método para trocar traje
+    
+    public void trocarTraje(Traje traje) {
+        
+        Traje trajeAtual = this.traje;    // Armazena temporariamente o traje atual
+        this.traje = traje;               // Substitui o traje atual pelo novo
+        bolsa.removerTraje(traje);        // Remove o novo traje da bolsa
+        bolsa.adicionarTraje(trajeAtual); // Adiciona o traje atual a bolsa
+        
+        bonusEquipamento(this.arma, this.traje); // Calcula o bônus para o aquipamento atual
+    }
+    
+    // Método para usar item
+    
+    public void usarItem(Item item) {
+        
+        int nivel = item.getNivel(); // Armazena o nível do item
+        int ataque = getAtaque();    // Armazena o ataque do herói
+        int defesa = getDefesa();    // Armazena a defesa do herói
+        double hp = getHp();         // Armazena o hp do herói
+        
+        setAtaque((int)(ataque + item.getFatorAtaque()*nivel*ataque)); // Calcula o bônus de ataque do item
+        setDefesa((int)(defesa + item.getFatorDefesa()*nivel*defesa)); // Calcula o bônus de defesa do item
+        setHp(hp + item.getFatorHp()*nivel*hp);                        // Insere o fator de recuperação de hp
     }
     
     // Método de ataque

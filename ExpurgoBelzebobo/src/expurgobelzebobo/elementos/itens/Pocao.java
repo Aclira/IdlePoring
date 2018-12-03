@@ -6,6 +6,6 @@ package expurgobelzebobo.elementos.itens;
 public class Pocao extends Item {
     
     public Pocao(int nivel, boolean liberado) {
-        super("Pocao", 0.0, 0.0, 0.05, nivel, liberado);
+        super("Poção", 0.0, 0.0, 0.05, nivel, liberado);
     }
 }

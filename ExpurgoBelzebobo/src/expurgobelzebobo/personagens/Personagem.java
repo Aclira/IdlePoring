@@ -13,19 +13,20 @@ public abstract class Personagem {
     private int inteligencia; // Pontos de inteligência do personagem
     private double hp;        // Pontos de vida do personagem
     
-    // Nivel máximo de personagem
+    // Nivel máximo de personagem e constante básica para o cálculo de atributos
     
     private final int NIVEL_MAX = 10;
+    protected final int CONST_BAS = 100;
     
     // Construtor para criação do personagem
 
     public Personagem(String nome, int nivel) {
         this.nome = nome;
         this.nivel = nivel;
-        this.hp = nivel*100;
-        this.ataque = nivel*100;
-        this.defesa = nivel*100;
-        this.inteligencia = nivel*10;
+        this.ataque = nivel*CONST_BAS;
+        this.defesa = nivel*CONST_BAS;
+        this.inteligencia = nivel*(CONST_BAS/10);
+        this.hp = nivel*CONST_BAS;
     }
     
     // Getters e setters para leitura e manipulação das características
