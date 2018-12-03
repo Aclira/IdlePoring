@@ -17,25 +17,25 @@ public class Batalha {
     // Chance de ocorrer: 20%
     
     private boolean fatorErro(Random gerador) {
-        return gerador.nextInt(101) < 21;
+        return (gerador.nextInt(100) + 1) < 21;
     }
     
     // Método que calcula a probabilidade do personagem efetuar um ataque crítico
     // Chance para herói/inimigo: 10%
     
     private boolean fatorCritico(Random gerador) {
-        return gerador.nextInt(101) < 11;
+        return (gerador.nextInt(100) + 1) < 11;
     }
     
-    // Métodos que setam uma mensagem informando o tipo de ataque fetuado pelo personagem
+    // Métodos que setam uma mensagem informando o tipo de ataque efetuado pelo personagem
     // Errado, Normal ou Crítico
     // O boss nunca erra o ataque
     
     // Versão do inimigo
     
-    private String tipoAtaque(Inimigo inimigo, boolean fatorErro, boolean fatorCritico) {
+    private String tipoAtaque(boolean boss, boolean fatorErro, boolean fatorCritico) {
         
-        if(fatorErro && inimigo.isBoss() == false) {
+        if(fatorErro && boss == false) {
             return "Errou!";
         } else if(fatorCritico) {
             return "Crítico!";
@@ -70,7 +70,7 @@ public class Batalha {
         } catch(InterruptedException x) { }
                 
         System.out.print(inimigo.getNome() + " usa " + nomeHabilidade);
-        System.out.println(": " + tipoAtaque(inimigo, fErro, fCritico));
+        System.out.println(": " + tipoAtaque(inimigo.isBoss(), fErro, fCritico));
         System.out.println("Dano infligido: " + danoInfligido + ".");
             
         System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
@@ -97,57 +97,64 @@ public class Batalha {
         System.out.println("\n");
     }
     
+    // Chama o método de atualização de nível do herói e exibe mensagens pertinentes ao final da batalha
+    
+    private void finalBatalha(Heroi heroi, int nivelFase) {
+        
+        if(heroi.getHp() > 0) {
+                
+            int nivelHeroi = heroi.getNivel();    // Armazena o nível atual do herói
+            int experiencia = nivelFase*EXP_BASE; // Calcula a experiência ganha pelo herói
+            heroi.atualizarNivel(experiencia);    // Atualiza o nível do herói
+                
+            System.out.println(heroi.getNome() + " venceu!");
+            System.out.println("Ganhou " + "10" + " de experiência!");
+                
+            // Caso o nivel inicial do heroi seja diferente do nível atualizado, exibe uma mensagem
+                
+            if(heroi.getNivel() > nivelHeroi) {
+                System.out.println(heroi.getNome() + "subiu para o nível " + heroi.getNivel());
+            }
+                
+            System.out.println("Encontrou " + "Objeto" + "!");
+        } else {
+            
+            System.out.println(heroi.getNome() + " foi derrotado(a)!");
+            System.out.println("Fim de jogo!");
+            
+            System.exit(0); // Encerra a aplicação
+        }
+    }
+    
     // Método principal
     
     public Batalha(Heroi heroi, Inimigo inimigo, int nivelFase) {
         
         Random gerador = new Random(); // Cria o objeto gerador para gerar números aleatórios
         
-        if(inimigo.isBoss()) {
+        while(heroi.getHp() > 0 && inimigo.getHp() > 0) {
             
-            // Caso o inimigo seja um boss, ele é o primeiro a atacar
+            if(inimigo.isBoss()) {
             
-            AtaqueInimigo(heroi, inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
+                // Caso o inimigo seja um boss, ele é o primeiro a atacar
             
-            if(heroi.getHp() > 0) {
-                AtaqueHeroi(heroi,inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
-            }
-        } else {
+                AtaqueInimigo(heroi, inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
             
-            // Caso o inimigo não seja um boss, o herói é o primeiro a atacar
-            
-            AtaqueHeroi(heroi, inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
-            
-            if(heroi.getHp() > 0) {
-                AtaqueInimigo(heroi,inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
-            }
-        }
-        
-        // Exibe mensagens relativas ao resultado da batalha, quando necessário
-        
-        if(heroi.getHp() == 0.0 || inimigo.getHp() == 0.0) {
-            
-            if(heroi.getHp() > 0) {
-                
-                
-                int nivelHeroi = heroi.getNivel();    // Armazena o nível atual do herói
-                int experiencia = nivelFase*EXP_BASE; // Calcula a experiência ganha pelo herói
-                heroi.atualizarNivel(experiencia);    // Atualiza o nível do herói
-                
-                System.out.println(heroi.getNome() + " venceu!");
-                System.out.println("Ganhou " + "10" + " de experiência!");
-                
-                // Caso o nivel anterior do heroi seja diferente do nível atualizado, exibe uma mensagem
-                
-                if(heroi.getNivel() > nivelHeroi) {
-                    System.out.println(heroi.getNome() + "subiu para o nível " + heroi.getNivel());
+                if(heroi.getHp() > 0) {
+                    AtaqueHeroi(heroi,inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
                 }
-                
-                System.out.println("Encontrou " + "Objeto" + "!");
             } else {
-                System.out.println(heroi.getNome() + " foi derrotado(a)!");
-                System.out.println("Fim de jogo!");
+            
+                // Caso o inimigo não seja um boss, o herói é o primeiro a atacar
+            
+                AtaqueHeroi(heroi, inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
+            
+                if(heroi.getHp() > 0) {
+                    AtaqueInimigo(heroi,inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
+                }
             }
         }
+        
+        finalBatalha(heroi, nivelFase); // Procedimento de final de batalha
     }    
 }

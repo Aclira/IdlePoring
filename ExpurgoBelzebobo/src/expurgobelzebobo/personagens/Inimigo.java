@@ -16,21 +16,20 @@ public class Inimigo extends Personagem {
     // Variáveis auxiliares para buscar uma habilidade de batalha
     
     private int numHabilidades; // Armazena o número de habilidades
-    private int habUtilizada;   // Armazena a habilidade utilizada
+    private int habUtilizada;   // Armazena o ID habilidade utilizada no último ataque
     
     // Constutor para criação do inimigo
-    public Inimigo(Raca raca){
-        super(raca.getNome());
-        this.raca = raca;
-    }
-    
+
     public Inimigo(Raca raca, boolean boss, int nivel) {        
         super(raca.getNome(), nivel);
         this.boss = boss;
         this.raca = raca;
     }
     
-
+    public Inimigo(Raca raca){
+        super(raca.getNome());
+        this.raca = raca;
+    }
     
     // Getters para leitura das características
     
