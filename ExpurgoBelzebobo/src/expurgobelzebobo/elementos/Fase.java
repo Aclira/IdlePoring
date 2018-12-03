@@ -50,7 +50,7 @@ public class Fase {
                 inimigo.setBoss(true);
                 System.out.println("BOSS DA FASE "+i);
             }
-            Batalha pancadaria = new Batalha(heroi, inimigo);
+            Batalha pancadaria = new Batalha(heroi, inimigo, this.nivel);
         }
         return 0;
     }
