@@ -9,6 +9,10 @@ import java.util.Random;
 
 public class Batalha {
     
+    // Define a experiência base que o herói pode receber ao final da batalha
+    
+    private final int EXP_BASE = 10;
+    
     // Método que calcula a probabilidade do personagem errar o ataque
     // Chance de ocorrer: 20%
     
@@ -97,13 +101,13 @@ public class Batalha {
     
     // Método principal
     
-    public Batalha(Heroi heroi, Inimigo inimigo) {
+    public Batalha(Heroi heroi, Inimigo inimigo, int nivelFase) {
         
         Random gerador = new Random(); // Cria o objeto gerador para gerar números aleatórios
         
         if(inimigo.isBoss()) {
             
-            // Caso o inimigo um boss, ele é o primeiro a atacar
+            // Caso o inimigo seja um boss, ele é o primeiro a atacar
             
             AtaqueInimigo(heroi, inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
             
@@ -126,8 +130,21 @@ public class Batalha {
         if(heroi.getHp() == 0.0 || inimigo.getHp() == 0.0) {
             
             if(heroi.getHp() > 0) {
+                
+                
+                int nivelHeroi = heroi.getNivel();    // Armazena o nível atual do herói
+                int experiencia = nivelFase*EXP_BASE; // Calcula a experiência ganha pelo herói
+                heroi.atualizarNivel(experiencia);    // Atualiza o nível do herói
+                
                 System.out.println(heroi.getNome() + " venceu!");
                 System.out.println("Ganhou " + "10" + " de experiência!");
+                
+                // Caso o nivelHeroi seja diferente do nível atualizado, exibe uma mensagem
+                
+                if(heroi.getNivel() > nivelHeroi) {
+                    System.out.println(heroi.getNome() + "subiu para o nível " + heroi.getNivel());
+                }
+                
                 System.out.println("Encontrou " + "Objeto" + "!");
             } else {
                 System.out.println(heroi.getNome() + " foi derrotado(a)!");

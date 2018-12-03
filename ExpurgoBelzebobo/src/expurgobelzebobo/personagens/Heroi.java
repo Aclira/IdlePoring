@@ -79,9 +79,9 @@ public class Heroi extends Personagem {
         }        
     }
     
-    // Método para subir de nível
+    // Método para atualizar o nível
     
-    public void subirNivel(int experiencia) {
+    public void atualizarNivel(int experiencia) {
         
         setExperiencia(experiencia); // Adiciona a experiência recebida à experiência atual
         
