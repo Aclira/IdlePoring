@@ -1,5 +1,6 @@
 package expurgobelzebobo.principal;
 
+
 import expurgobelzebobo.elementos.classes.Mago;
 import expurgobelzebobo.elementos.racas.Ogro;
 
@@ -9,12 +10,14 @@ import expurgobelzebobo.personagens.Inimigo;
 import expurgobelzebobo.elementos.armas.Cajado;
 import expurgobelzebobo.elementos.trajes.Tunica;
 
-import expurgobelzebobo.elementos.Batalha;
 import expurgobelzebobo.elementos.Fase;
+import expurgobelzebobo.elementos.Bolsa;
 
 public class Play {
 
     public static void main(String[] args) { 
+        Bolsa bolsa = new Bolsa();
+        
         Mago mago = new Mago();
         Ogro shrek = new Ogro();
         
@@ -31,6 +34,8 @@ public class Play {
                 Fase fase = new Fase(nivel,true, heroi, inimigo);
                 System.out.println(fase.getNome());        
                 fase.batalhas(nivel);
+                
+                bolsa.exibirObjetos();
             
                 if(heroi.getHp() > 0 && inimigo.getHp() == 0){
                     System.out.println("HEROI PASSOU DE FASE");

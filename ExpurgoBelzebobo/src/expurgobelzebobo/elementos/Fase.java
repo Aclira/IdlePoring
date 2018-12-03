@@ -39,13 +39,12 @@ public class Fase {
         return nivel;
     }
 
-    
-    
     //Loop com número de batalhas até o boss
     
     public int batalhas(int nivel){
         int nBat = nivel*5;
         for(int i = 0; i<nBat; i++){
+            System.out.println("BATALHA "+i);
             if(i == nBat-1){
                 //inimigo.setBoss(true);
                 System.out.println("BOSS DA FASE "+i);

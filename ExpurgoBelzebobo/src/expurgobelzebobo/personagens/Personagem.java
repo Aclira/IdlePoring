@@ -29,6 +29,15 @@ public abstract class Personagem {
         this.hp = nivel*CONST_BAS;
     }
     
+    public Personagem(String nome) {
+        this.nome = nome;
+        this.nivel = 1;
+        this.ataque = nivel*CONST_BAS;
+        this.defesa = nivel*CONST_BAS;
+        this.inteligencia = nivel*(CONST_BAS/10);
+        this.hp = nivel*CONST_BAS;
+    }
+    
     // Getters e setters para leitura e manipulação das características
     
     // Atributo nome

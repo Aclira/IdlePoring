@@ -19,12 +19,18 @@ public class Inimigo extends Personagem {
     private int habUtilizada;   // Armazena a habilidade utilizada
     
     // Constutor para criação do inimigo
+    public Inimigo(Raca raca){
+        super(raca.getNome());
+        this.raca = raca;
+    }
     
     public Inimigo(Raca raca, boolean boss, int nivel) {        
         super(raca.getNome(), nivel);
         this.boss = boss;
         this.raca = raca;
     }
+    
+
     
     // Getters para leitura das características
     
@@ -104,7 +110,7 @@ public class Inimigo extends Personagem {
             danoGerado = danoGerado*fatorCritico;
         }
         
-        heroi.setHp(heroi.getHp() - danoGerado); // Seta o novo hp do herói
+        heroi.setHp(heroi.getHp() - (danoGerado/2)); // Seta o novo hp do herói
         return danoGerado;                       // Retorna o dano gerado
     }
 }
