@@ -1,7 +1,6 @@
 package expurgobelzebobo.flyweight;
 
 import expurgobelzebobo.elementos.racas.Raca;
-import expurgobelzebobo.flyweight.InterfaceFlyweight;
 import expurgobelzebobo.personagens.Inimigo;
 import java.util.HashMap;
 
@@ -13,8 +12,10 @@ public class FlyweightFactory {
     
         if(inimigo == null){
             inimigo = new Inimigo(raca);
-            inimigoMap.put(raca, (InterfaceFlyweight) inimigo);   
+            inimigoMap.put(raca, inimigo);  
+            System.out.println("\nCRIANDO INIMIGO : " + raca.getNome());
+
         }
-        return (InterfaceFlyweight) inimigo;
+        return inimigo;
     }
 }

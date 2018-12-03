@@ -3,10 +3,11 @@
 package expurgobelzebobo.personagens;
 
 import expurgobelzebobo.elementos.racas.Raca;
+import expurgobelzebobo.flyweight.InterfaceFlyweight;
 
 import java.util.Random;
 
-public class Inimigo extends Personagem {
+public class Inimigo extends Personagem implements InterfaceFlyweight{
     
     // Características do inimigo
     
@@ -111,5 +112,10 @@ public class Inimigo extends Personagem {
         
         heroi.setHp(heroi.getHp() - (danoGerado/2)); // Seta o novo hp do herói
         return danoGerado;                       // Retorna o dano gerado
+    }
+    
+    @Override
+    public void drawn() {
+        System.out.println("Inimigo: [Nome : " + raca.getNome());
     }
 }

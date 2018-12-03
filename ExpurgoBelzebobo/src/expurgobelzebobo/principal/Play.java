@@ -12,6 +12,7 @@ import expurgobelzebobo.elementos.trajes.Tunica;
 
 import expurgobelzebobo.elementos.Fase;
 import expurgobelzebobo.elementos.Bolsa;
+import expurgobelzebobo.flyweight.FlyweightFactory;
 
 public class Play {
 
@@ -25,12 +26,15 @@ public class Play {
         Tunica tunica = new Tunica(true);
         
         Heroi heroi = new Heroi(mago, cajado, tunica, "Acza");
-        Inimigo inimigo = new Inimigo(shrek, false, 1);
+        //Inimigo inimigo = new Inimigo(shrek, false, 1);
+        Inimigo inimigo = (Inimigo)FlyweightFactory.getInimigo(shrek);
         inimigo.setNome("José");
         int nivel = 1;
         
         while(nivel<4){
             while(heroi.getHp() > 0 && inimigo.getHp() > 0) {
+                Inimigo inimigos = (Inimigo)FlyweightFactory.getInimigo(inimigo.getRaca());
+                inimigo.drawn();
                 Fase fase = new Fase(nivel,true, heroi, inimigo);
                 System.out.println(fase.getNome());        
                 fase.batalhas(nivel);
