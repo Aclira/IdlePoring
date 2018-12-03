@@ -8,5 +8,4 @@ public class Arco extends Arma {
     public Arco(boolean liberado) {        
         super("Arco", atb.getDistancia(), 0.03, liberado);
     }
-    
 }

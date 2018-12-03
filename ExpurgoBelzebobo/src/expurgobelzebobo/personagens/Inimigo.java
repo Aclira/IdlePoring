@@ -11,7 +11,7 @@ public class Inimigo extends Personagem {
     // Características do inimigo
     
     private final Raca raca;    // Raça do inimigo
-    private boolean boss; // Determina se o inimigo é um chefe de fase
+    private boolean boss;       // Determina se o inimigo é um chefe de fase
     
     // Variáveis auxiliares para buscar uma habilidade de batalha
     

@@ -8,5 +8,4 @@ public class Tunica extends Traje {
     public Tunica(boolean liberado) {        
         super("Tunica", atb.getMagico(), 0.03, liberado);
     }
-    
 }

@@ -10,5 +10,4 @@ public class Guerreiro extends Classe {
     public Guerreiro() {
         super("Guerreiro", atb.getFisico(), atb.getDistancia(), atb.getMagico(), 0.1, 0.0, 0.0);
     }
-    
 }

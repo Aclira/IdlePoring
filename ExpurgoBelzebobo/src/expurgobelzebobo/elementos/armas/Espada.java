@@ -8,5 +8,4 @@ public class Espada extends Arma {
     public Espada(boolean liberado) {
         super("Espada", atb.getFisico(), 0.03, liberado);
     }
-    
 }

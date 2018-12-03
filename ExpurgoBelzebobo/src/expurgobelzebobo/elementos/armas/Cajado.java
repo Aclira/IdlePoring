@@ -8,5 +8,4 @@ public class Cajado extends Arma {
     public Cajado(boolean liberado) {
         super("Cajado", atb.getMagico(), 0.03, liberado);
     }
-    
 }

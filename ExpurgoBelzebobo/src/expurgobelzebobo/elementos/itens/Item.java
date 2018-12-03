@@ -59,5 +59,4 @@ public abstract class Item {
     public boolean isLiberado() {
         return liberado;
     }
-        
 }

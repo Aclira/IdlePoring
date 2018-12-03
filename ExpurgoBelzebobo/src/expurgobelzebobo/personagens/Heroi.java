@@ -2,6 +2,7 @@
 
 package expurgobelzebobo.personagens;
 
+import expurgobelzebobo.elementos.Bolsa;
 import expurgobelzebobo.elementos.classes.Classe;
 import expurgobelzebobo.elementos.armas.Arma;
 import expurgobelzebobo.elementos.trajes.Traje;
@@ -12,10 +13,11 @@ public class Heroi extends Personagem {
     
     // Características do herói
     
-    private Classe classe;
-    private Arma arma;
-    private Traje traje;
-    private int experiencia = 0;
+    private Classe classe;                  // Classe do herói
+    private Arma arma;                      // Arma do herói
+    private Traje traje;                    // Traje do herói
+    private int experiencia = 0;            // Experiência do herói
+    public final Bolsa bolsa = new Bolsa(); // Bolsa do herói
     
     // Experiência máxima do herói
     

@@ -8,5 +8,4 @@ public class Estamina extends Item {
     public Estamina(int nivel, boolean liberado) {
         super("Estamina", 0.05, 0.0, 0.0, nivel, liberado);
     }
-    
 }

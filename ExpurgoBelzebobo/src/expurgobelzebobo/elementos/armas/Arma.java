@@ -46,5 +46,4 @@ public abstract class Arma {
     public void setLiberado(boolean liberado) {
         this.liberado = liberado;
     }    
-    
 }

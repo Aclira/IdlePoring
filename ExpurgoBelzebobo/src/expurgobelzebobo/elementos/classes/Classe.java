@@ -59,5 +59,4 @@ public abstract class Classe {
     public double getFatorInteligencia() {
         return fatorInteligencia;
     }    
-    
 }

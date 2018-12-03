@@ -47,5 +47,4 @@ public abstract class Traje {
     public void setLiberado(boolean liberado) {
         this.liberado = liberado;
     }    
-    
 }

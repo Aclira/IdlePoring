@@ -8,5 +8,4 @@ public class Armadura extends Traje {
     public Armadura(boolean liberado) {        
         super("Armadura", atb.getFisico(), 0.03, liberado);
     }
-    
 }
