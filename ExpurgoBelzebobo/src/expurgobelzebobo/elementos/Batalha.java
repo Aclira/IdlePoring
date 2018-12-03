@@ -5,6 +5,10 @@ package expurgobelzebobo.elementos;
 import expurgobelzebobo.personagens.Heroi;
 import expurgobelzebobo.personagens.Inimigo;
 
+import expurgobelzebobo.elementos.armas.*;
+import expurgobelzebobo.elementos.itens.*;
+import expurgobelzebobo.elementos.trajes.*;
+
 import java.util.Random;
 
 public class Batalha {
@@ -57,6 +61,87 @@ public class Batalha {
         }
     }
     
+    // Método que gera novos objeto ao final da batalha
+    
+    private void drop(Heroi heroi, int nivelFase, Random gerador) {
+        
+        String nomeObjeto; // Armazenará o nome do objeto gerado
+        
+        if(heroi.bolsa.espacoDisponivel()) {
+            
+            // Caso a bolsa ainda tenha espaço disponível, um tipo de objeto é sorteado
+        
+            int sorteio = gerador.nextInt(3);
+            
+            switch (sorteio) {
+                case 0: // O objeto sorteado é uma arma: novo sorteio para definir qual arma será gerada
+                    sorteio = gerador.nextInt(3);
+                    switch (sorteio) {
+                        case 0: // A arma sorteada é um arco
+                            Arco arma = new Arco(true);
+                            heroi.bolsa.adicionarArma(arma);
+                            nomeObjeto = arma.getNome();
+                            break;
+                        case 1: // A arma sorteada é um cajado
+                            Cajado cajado = new Cajado(true);
+                            heroi.bolsa.adicionarArma(cajado);
+                            nomeObjeto = cajado.getNome();
+                            break;
+                        default: // A arma sorteada é uma espada
+                            Espada espada = new Espada(true);
+                            heroi.bolsa.adicionarArma(espada);
+                            nomeObjeto = espada.getNome();
+                            break;
+                    }   break;
+                case 1: // O objeto sorteado é um traje: novo sorteio para definir qual traje será gerado
+                    sorteio = gerador.nextInt(3);
+                    switch (sorteio) {
+                        case 0:  // O traje sorteado é uma armadura
+                            Armadura armadura = new Armadura(true);
+                            heroi.bolsa.adicionarTraje(armadura);
+                            nomeObjeto = armadura.getNome();
+                            break;
+                        case 1: // O traje sorteado é uma jaqueta
+                            Jaqueta jaqueta = new Jaqueta(true);
+                            heroi.bolsa.adicionarTraje(jaqueta);
+                            nomeObjeto = jaqueta.getNome();
+                            break;
+                        default: // O traje sorteado é uma túnica
+                            Tunica tunica = new Tunica(true);
+                            heroi.bolsa.adicionarTraje(tunica);
+                            nomeObjeto = tunica.getNome();
+                            break;
+                    }   break;
+                default: // O objeto sorteado é um item: novo sorteio para definir qual item será gerado
+                    sorteio = gerador.nextInt(3);
+                    switch (sorteio) {
+                        case 0:  // Item sorteado: adrenalina
+                            Adrenalina adrenalina = new Adrenalina(nivelFase, true);
+                            heroi.bolsa.adicionarItem(adrenalina);
+                            nomeObjeto = adrenalina.getNome();
+                            break;
+                        case 1: // Item sorteado: estamina
+                            Estamina estamina = new Estamina(nivelFase, true);
+                            heroi.bolsa.adicionarItem(estamina);
+                            nomeObjeto = estamina.getNome();
+                            break;
+                        default: // Item sorteado: poção
+                            Pocao pocao = new Pocao(nivelFase, true);
+                            heroi.bolsa.adicionarItem(pocao);
+                            nomeObjeto = pocao.getNome();
+                            break;
+                    }   break;
+            }
+            
+            System.out.println("Encontrou " + nomeObjeto + "!"); // Mensagem informando o objeto encontrado
+        } else {
+            
+            // Caso não tenha espaço sobrando na bolsa, uma mensagem é exibida
+            
+            System.out.println("Bolsa cheia!");
+        }
+    }
+    
     // Chama o método de ataque do inimigo e gera mensagens pertinentes ao ataque
     
     private void AtaqueInimigo(Heroi heroi, Inimigo inimigo, boolean fErro, boolean fCritico, Random gerador) {
@@ -99,7 +184,7 @@ public class Batalha {
     
     // Chama o método de atualização de nível do herói e exibe mensagens pertinentes ao final da batalha
     
-    private void finalBatalha(Heroi heroi, int nivelFase) {
+    private void finalBatalha(Heroi heroi, int nivelFase, Random gerador) {
         
         if(heroi.getHp() > 0) {
                 
@@ -116,7 +201,7 @@ public class Batalha {
                 System.out.println(heroi.getNome() + "subiu para o nível " + heroi.getNivel());
             }
                 
-            System.out.println("Encontrou " + "Objeto" + "!");
+            drop(heroi, nivelFase, gerador);
         } else {
             
             System.out.println(heroi.getNome() + " foi derrotado(a)!");
@@ -155,6 +240,6 @@ public class Batalha {
             }
         }
         
-        finalBatalha(heroi, nivelFase); // Procedimento de final de batalha
+        finalBatalha(heroi, nivelFase, gerador); // Procedimento de final de batalha
     }    
 }
