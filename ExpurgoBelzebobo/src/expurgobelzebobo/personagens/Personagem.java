@@ -92,7 +92,7 @@ public abstract class Personagem {
     }
 
     public void setHp(double hp) {
-        if(hp < 0) {
+        if(hp < 1) {
             this.hp = 0.0;
         } else {
             this.hp = hp;

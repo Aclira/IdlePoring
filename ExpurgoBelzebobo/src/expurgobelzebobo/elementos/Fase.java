@@ -47,7 +47,7 @@ public class Fase {
         int nBat = nivel*5;
         for(int i = 0; i<nBat; i++){
             if(i == nBat-1){
-                inimigo.setBoss(true);
+                //inimigo.setBoss(true);
                 System.out.println("BOSS DA FASE "+i);
             }
             Batalha pancadaria = new Batalha(heroi, inimigo, this.nivel);

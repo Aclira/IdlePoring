@@ -68,9 +68,7 @@ public class Batalha {
         try {
             Thread.sleep(gerador.nextInt(3000)); // Aguarda até 3 segundos antes de exibir as mensagens
         } catch(InterruptedException x) { }
-        
-        
-        
+                
         System.out.print(inimigo.getNome() + " usa " + nomeHabilidade);
         System.out.println(": " + tipoAtaque(inimigo, fErro, fCritico));
         System.out.println("Dano infligido: " + danoInfligido + ".");
@@ -139,7 +137,7 @@ public class Batalha {
                 System.out.println(heroi.getNome() + " venceu!");
                 System.out.println("Ganhou " + "10" + " de experiência!");
                 
-                // Caso o nivelHeroi seja diferente do nível atualizado, exibe uma mensagem
+                // Caso o nivel anterior do heroi seja diferente do nível atualizado, exibe uma mensagem
                 
                 if(heroi.getNivel() > nivelHeroi) {
                     System.out.println(heroi.getNome() + "subiu para o nível " + heroi.getNivel());
