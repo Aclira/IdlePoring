@@ -61,6 +61,7 @@ public class Play {
             // Exibe um menu com as opções disponíveis no jogo
             
             System.out.println();
+            System.out.println("Nível dos inimigos: " + nivel + " (aumenta se vencer o boss)");
             System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
             System.out.println(" O que deseja fazer?");
             System.out.println("1 - Nova batalha");
@@ -89,6 +90,7 @@ public class Play {
                     System.out.print("\nHP de " + heroi.getNome() + ": " + (int)heroi.getHp());
                     System.out.println(" HP de " + inimigo_2.getNome() + ": " + (int)inimigo_2.getHp());
                     Batalha batalhaBoss = new Batalha(heroi, inimigo_2, nivel);
+                    heroi.bolsa.setTamanho(nivel);
                     nivel++;
                     break;
                 case 3:
