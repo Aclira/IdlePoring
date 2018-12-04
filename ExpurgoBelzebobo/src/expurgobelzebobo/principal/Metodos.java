@@ -24,7 +24,7 @@ public class Metodos {
     protected Heroi criarHeroi() {
         
         System.out.print("Informe o seu nome: ");
-        String nome = entrada.toString();
+        String nome = entrada.nextLine();
         
         System.out.println("Escolha a sua classe: ");
         System.out.println("1 - Arqueiro");
