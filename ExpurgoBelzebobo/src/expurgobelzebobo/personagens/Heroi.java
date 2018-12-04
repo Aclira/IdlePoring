@@ -120,20 +120,6 @@ public class Heroi extends Personagem {
         }
     }
     
-    // Método para usar item
-    
-    public void usarItem(Item item) {
-        
-        int nivel = item.getNivel(); // Armazena o nível do item
-        int ataque = getAtaque();    // Armazena o ataque do herói
-        int defesa = getDefesa();    // Armazena a defesa do herói
-        double hp = getHp();         // Armazena o hp do herói
-        
-        setAtaque((int)(ataque + item.getFatorAtaque()*nivel*ataque)); // Calcula o bônus de ataque do item
-        setDefesa((int)(defesa + item.getFatorDefesa()*nivel*defesa)); // Calcula o bônus de defesa do item
-        setHp(hp + item.getFatorHp()*nivel*hp);                        // Insere o fator de recuperação de hp
-    }
-    
     // Método de ataque
     
     public double ataque(Inimigo inimigo, boolean erro, boolean critico) {

@@ -10,7 +10,7 @@ public class Bolsa {
     
     // Lista de itens que a bolsa pode comportar
     
-    private final ArrayList<Item> itens = new ArrayList<>();
+    public final ArrayList<Item> itens = new ArrayList<>();
     
     // Método construtor para criação da bolsa
     
@@ -38,12 +38,16 @@ public class Bolsa {
         for(int i = 0; i < itens.size(); i++) {
             System.out.print(i+1 + " - " + itens.get(i).getNome() + " (" + itens.get(i).getNivel() + "):");
             
-            if(itens.get(i).getNome().equals("Adrenalina")) {
-                System.out.println("Bônus de " + itens.get(i).getFatorAtaque()*100 + "% no ataque.");
-            } else if(itens.get(i).getNome().equals("Estamina")) {
-                System.out.println("Bônus de " + itens.get(i).getFatorDefesa()*100 + "% na defesa.");
-            } else {
-                System.out.println("Recupera " + itens.get(i).getFatorHp()*100 + "% do HP.");
+            switch (itens.get(i).getNome()) {
+                case "Adrenalina":
+                    System.out.println("Bônus de " + itens.get(i).getFatorAtaque()*100 + "% no ataque.");
+                    break;
+                case "Estamina":
+                    System.out.println("Bônus de " + itens.get(i).getFatorDefesa()*100 + "% na defesa.");
+                    break;
+                default:
+                    System.out.println("Recupera " + itens.get(i).getFatorHp()*100 + "% do HP.");
+                    break;
             }
         }
     }

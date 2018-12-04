@@ -1,9 +1,10 @@
-// Contém os métodos principais do jogo
+// Contém os métodos auxiliares para manipulação de objetos relativos ao herói
 
 package expurgobelzebobo.principal;
 
 import expurgobelzebobo.personagens.*;
 import expurgobelzebobo.elementos.armas.*;
+import expurgobelzebobo.elementos.classes.*;
 import expurgobelzebobo.elementos.trajes.*;
 
 import java.util.Scanner;
@@ -11,6 +12,48 @@ import java.util.Scanner;
 public class Metodos {
     
     private final Scanner entrada = new Scanner(System.in); // Armazena as entradas do uusário
+    
+    // Construtor da classe: existe para que seja possível instanciá-la
+    
+    public Metodos() {
+        
+    }
+    
+    // Método para criar herói
+    
+    protected Heroi criarHeroi() {
+        
+        System.out.print("Informe o seu nome: ");
+        String nome = entrada.toString();
+        
+        System.out.println("Escolha a sua classe: ");
+        System.out.println("1 - Arqueiro");
+        System.out.println("2 - Guerreiro");
+        System.out.println("3 - Mago");
+        System.out.print("Escolha: ");
+        int escolha = entrada.nextInt();
+        
+        switch (escolha) {
+            case 1:
+                Arqueiro arqueiro = new Arqueiro();
+                Arco arco = new Arco(true);
+                Jaqueta jaqueta = new Jaqueta(true);
+                Heroi heroiArqueiro = new Heroi(arqueiro, arco, jaqueta, nome);
+                return heroiArqueiro;
+            case 2:
+                Guerreiro guerreiro = new Guerreiro();
+                Espada espada = new Espada(true);
+                Armadura armadura = new Armadura(true);
+                Heroi heroiGuerreiro = new Heroi(guerreiro, espada, armadura, nome);
+                return heroiGuerreiro;
+            default:
+                Mago mago = new Mago();
+                Cajado cajado = new Cajado(true);
+                Tunica tunica = new Tunica(true);
+                Heroi heroiMago = new Heroi(mago, cajado, tunica, nome);
+                return heroiMago;
+        }
+    }
     
     // Método para trocar de arma
     
