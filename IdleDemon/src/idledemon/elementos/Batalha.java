@@ -168,9 +168,8 @@ public class Batalha {
             
             System.out.println();
             System.out.println(heroi.getNome() + " foi derrotado(a)!");
-            System.out.println("Fim de jogo!");
             
-            System.exit(0); // Força o encerramento da aplicação
+            heroi.setHp(heroi.getNivel()*heroi.getHp());
         }
     }
     
