@@ -140,7 +140,7 @@ public class Batalha {
         System.out.println("Dano infligido: " + danoInfligido + ".");
         
         System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
-        System.out.println(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp());
+        System.out.println(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp() + ".");
     }
     
     // Chama o método de atualização de nível do herói e exibe mensagens pertinentes ao final da batalha

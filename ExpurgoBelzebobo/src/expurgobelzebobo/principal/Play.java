@@ -16,27 +16,30 @@ public class Play {
     
     // Inicializa as instâncias base das raças
     
-    
+    private static final Ogro OGRO = new Ogro();
+    private static final Elfo ELFO = new Elfo();
+    private static final Planta PLANTA = new Planta();
+    private static final Slime SLIME = new Slime();
 
-    
     // Método para selecionar uma raça aleatória
-    private static Raca getRandomRaca(Raca racas[]){
-        //Raca racas[] = {elfo, ogro, planta, slime};
+    
+    private static Raca getRandomRaca() {
+        Raca racas[] = {ELFO, OGRO, PLANTA, SLIME};
         return racas[gerador.nextInt(racas.length)];
     }
     
+    // Seta os atributos iniciais dos inimigos comuns
+    
+    private static void setAtributos(Inimigo inimigo, int nivelFase) {
+        inimigo.setNivel(nivelFase);
+        inimigo.setAtaque(nivelFase*(inimigo.getConst()/2));
+        inimigo.setDefesa(nivelFase*(inimigo.getConst()/2));
+        inimigo.setInteligencia(nivelFase*((inimigo.getConst()/2)/10));
+        inimigo.setHp(nivelFase*(inimigo.getConst()/2));
+    }
+    
     public static void main(String[] args) { 
-        int nivel = 1;
         
-        
-        Ogro ogro = new Ogro();
-        Elfo elfo = new Elfo();
-        Planta planta = new Planta();
-        Slime slime = new Slime();
-        
-
-        
-
         Scanner entrada = new Scanner(System.in); // Armazena as entradas do usuário
         Metodos metodos = new Metodos();          // Instancia a classe métodos
         
@@ -45,7 +48,7 @@ public class Play {
         System.out.println("Bem vindo ao Idle Demon!"); // Mensagem inicial
         Heroi heroi = metodos.criarHeroi();             // Cria um nome herói
         boolean jogar = true;                           // Seta a variável de controle do laço principal
-                                          // Seta o nível inicial dos inimigos como 1
+        int nivel = 1;                                  // Seta o nível inicial dos inimigos como 1
         
         while(jogar) {
             
@@ -61,16 +64,14 @@ public class Play {
             System.out.println("6 - Usar item");
             System.out.println("  - Sair");
             System.out.print("Escolha: ");
-            
             int escolha = entrada.nextInt();
 
-            
             switch (escolha) {
                 case 1:
-                    Raca[] racas = {ogro, elfo, planta, slime};
-                    Inimigo inimigo_1 = (Inimigo)FlyweightFactory.getInimigo(getRandomRaca(racas));
+                    Inimigo inimigo_1 = (Inimigo)FlyweightFactory.getInimigo(getRandomRaca());
+                    setAtributos(inimigo_1, nivel);
+                    System.out.println("\n" + inimigo_1.getNome() + " apareceu.");
                     Batalha batalhaNormal = new Batalha(heroi, inimigo_1, nivel);
-                    System.out.println(heroi.getExperiencia());
                     inimigo_1.setHp(nivel*50);
                     break;
                 case 2:

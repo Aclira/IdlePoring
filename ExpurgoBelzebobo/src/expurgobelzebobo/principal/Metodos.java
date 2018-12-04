@@ -187,20 +187,20 @@ public class Metodos {
         
         // Verifica se a escolha do jogador se encontra no intervalores de itens da bolsa
         
-        if(escolha-1 <= heroi.bolsa.itens.size() && !heroi.bolsa.itens.isEmpty()) {
+        if(escolha-1 <= heroi.bolsa.lista.tam() && !heroi.bolsa.lista.empity()) {
             
             // Dados relativos ao item
         
-            int nivel = heroi.bolsa.itens.get(escolha-1).getNivel(); // Armazena o nível do item
-            int ataque = heroi.getAtaque();                          // Armazena o ataque do herói
-            int defesa = heroi.getDefesa();                          // Armazena a defesa do herói
-            double hp = heroi.getHp();                               // Armazena o hp do herói
+            int nivel = heroi.bolsa.lista.next(escolha-1).getNivel(); // Armazena o nível do item
+            int ataque = heroi.getAtaque();                           // Armazena o ataque do herói
+            int defesa = heroi.getDefesa();                           // Armazena a defesa do herói
+            double hp = heroi.getHp();                                // Armazena o hp do herói
         
             // Dados relativos ao herói
         
-            double ftAtaque = heroi.bolsa.itens.get(escolha-1).getFatorAtaque(); // Armaneza o bônus de ataque
-            double ftDefesa = heroi.bolsa.itens.get(escolha-1).getFatorDefesa(); // Armazena o bônus de defesa
-            double ftHp = heroi.bolsa.itens.get(escolha-1).getFatorHp();         // Armazena o recuperador de HP
+            double ftAtaque = heroi.bolsa.lista.next(escolha-1).getFatorAtaque(); // Armaneza o bônus de ataque
+            double ftDefesa = heroi.bolsa.lista.next(escolha-1).getFatorDefesa(); // Armazena o bônus de defesa
+            double ftHp = heroi.bolsa.lista.next(escolha-1).getFatorHp();         // Armazena o recuperador de HP
         
             // Atualização de atributos
         
@@ -208,7 +208,7 @@ public class Metodos {
             heroi.setDefesa((int)(defesa + ftAtaque*nivel*defesa)); // Calcula o bônus de defesa do item
             heroi.setHp(hp + ftHp*nivel*hp);                        // Insere o fator de recuperação de hp
         
-            heroi.bolsa.removerItem(heroi.bolsa.itens.get(escolha-1)); // Remove o item utilizado
+            heroi.bolsa.removerItem(heroi.bolsa.lista.next(escolha-1)); // Remove o item utilizado
         }
     }
     

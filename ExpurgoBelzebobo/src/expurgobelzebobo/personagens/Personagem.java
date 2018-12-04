@@ -34,11 +34,11 @@ public abstract class Personagem {
     
     public Personagem(String nome) {
         this.nome = nome;
-        this.nivel = 1;
-        this.ataque = nivel*50;
-        this.defesa = nivel*50;
-        this.inteligencia = nivel;
-        this.hp = nivel*50;
+        this.nivel = 0;
+        this.ataque = 0;
+        this.defesa = 0;
+        this.inteligencia = 0;
+        this.hp = 0;
     }
     
     // Getters e setters para leitura e manipulação das características

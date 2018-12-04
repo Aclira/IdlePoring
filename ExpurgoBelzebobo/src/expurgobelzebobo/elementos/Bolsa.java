@@ -1,18 +1,18 @@
 package expurgobelzebobo.elementos;
 
 import expurgobelzebobo.elementos.itens.Item;
-
-import java.util.ArrayList;
+import expurgobelzebobo.principal.iterator.*;
 
 public class Bolsa {
     
     private int tamanho; // Numero máximo de itens que a bolsa é capaz de comportar
     
-    // Lista de itens que a bolsa pode comportar
+    // Cria uma nova lista de itens: contém os exemplos com ArrayList e Vetor, para demonstrar o Iterator
     
-    public final ArrayList<Item> itens = new ArrayList<>();
+    public final ItemArrayList lista = new ItemArrayList(); // Utilizando ArrayList
+    public final ItemVetor Lista = new ItemVetor();         // Utilizando Vetores
     
-    // Método construtor para criação da bolsa
+    // Construtor da bolsa, que define o seu tamanho
     
     public Bolsa() {
         this.tamanho = 10;
@@ -24,37 +24,37 @@ public class Bolsa {
         this.tamanho = this.tamanho + expancao;
     }
     
-    // Métodos para manipulação dos itens contidos na bolsa
-    
-    public void adicionarItem(Item item) {
-        itens.add(item);
-    }
-    
-    public void removerItem(Item item) {
-        itens.remove(item);
-    }
-    
-    public void exibirItens() {
-        for(int i = 0; i < itens.size(); i++) {
-            System.out.print(i+1 + " - " + itens.get(i).getNome() + "(n" + itens.get(i).getNivel() + "): ");
-            
-            switch (itens.get(i).getNome()) {
-                case "Adrenalina":
-                    System.out.println("bônus de " + itens.get(i).getFatorDefesa()*100 + "% na defesa.");
-                    break;
-                case "Estamina":
-                    System.out.println("bônus de " + itens.get(i).getFatorAtaque()*100 + "% no Ataque.");
-                    break;
-                default:
-                    System.out.println("recupera " + itens.get(i).getFatorHp()*100 + "% do HP.");
-                    break;
-            }
-        }
-    }
-    
     // Verifica se ainda existe espaço disponível na bolsa
     
     public boolean espacoDisponivel() {
-        return itens.size() < tamanho;
+        return lista.tam() < tamanho;
+    }
+    
+    // Métodos para manipulação dos itens contidos na bolsa
+    
+    public void adicionarItem(Item item) {
+        lista.add(item);
+    }
+    
+    public void removerItem(Item item) {
+        lista.rem(item);
+    }
+    
+    public void exibirItens() {
+        for(int i = 0; i < lista.tam(); i++) {
+            System.out.print(i+1 + " - " + lista.next(i).getNome() + "(n" + lista.next(i).getNivel() + "): ");
+            
+            switch (lista.next(i).getNome()) {
+                case "Adrenalina":
+                    System.out.println("bônus de " + lista.next(i).getFatorDefesa()*100 + "% na defesa.");
+                    break;
+                case "Estamina":
+                    System.out.println("bônus de " + lista.next(i).getFatorAtaque()*100 + "% no Ataque.");
+                    break;
+                default:
+                    System.out.println("recupera " + lista.next(i).getFatorHp()*100 + "% do HP.");
+                    break;
+            }
+        }
     }
 }

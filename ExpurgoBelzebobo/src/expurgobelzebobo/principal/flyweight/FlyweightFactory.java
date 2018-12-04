@@ -13,8 +13,6 @@ public class FlyweightFactory {
         if(inimigo == null){
             inimigo = new Inimigo(raca);
             inimigoMap.put(raca, inimigo);  
-            System.out.println("\nCRIANDO INIMIGO : " + raca.getNome());
-
         }
         return inimigo;
     }
