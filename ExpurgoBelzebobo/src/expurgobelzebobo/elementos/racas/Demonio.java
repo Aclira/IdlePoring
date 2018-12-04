@@ -1,6 +1,6 @@
 // Contém da definição de Demônio.
-// Resistente a geral.
-// Vulnerável a nenhum.
+// Resistente a distância.
+// Vulnerável a mágico.
 
 package expurgobelzebobo.elementos.racas;
 
@@ -15,7 +15,7 @@ public class Demonio extends Raca {
     }
     
     public Demonio(){
-        super("Demônio", "geral", "geral");
+        super("Demônio", atb.getDistancia(), atb.getMagico());
         habilidades();
     }
 }

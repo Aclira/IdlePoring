@@ -100,6 +100,10 @@ public class Inimigo extends Personagem implements InterfaceFlyweight{
         
         danoGerado = (getAtaque()*getInteligencia()/defesa) + fatorSorte;
         
+        if(danoGerado < 1) {
+            danoGerado = 1;
+        }
+        
         if(erro && boss == false) {
             danoGerado = danoGerado*fatorErro;
         } else if(critico) {
@@ -110,12 +114,12 @@ public class Inimigo extends Personagem implements InterfaceFlyweight{
             danoGerado = danoGerado*fatorCritico;
         }
         
-        heroi.setHp(heroi.getHp() - (danoGerado/2)); // Seta o novo hp do herói
+        heroi.setHp(heroi.getHp() - danoGerado); // Seta o novo hp do herói
         return danoGerado;                       // Retorna o dano gerado
     }
     
     @Override
     public void drawn() {
-        System.out.println("Inimigo: [Nome : " + raca.getNome());
+        System.out.println("Inimigo: Nome : " + raca.getNome());
     }
 }

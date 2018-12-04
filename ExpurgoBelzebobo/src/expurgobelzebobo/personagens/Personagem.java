@@ -19,6 +19,8 @@ public abstract class Personagem {
     
     // Construtor para criação do personagem
 
+    // Versão do herói e do do boss
+    
     public Personagem(String nome, int nivel) {
         this.nome = nome;
         this.nivel = nivel;
@@ -28,13 +30,15 @@ public abstract class Personagem {
         this.hp = nivel*CONST_BAS;
     }
     
+    // Versão do inimigo comum
+    
     public Personagem(String nome) {
         this.nome = nome;
         this.nivel = 1;
-        this.ataque = nivel*CONST_BAS;
-        this.defesa = nivel*CONST_BAS;
-        this.inteligencia = nivel*(CONST_BAS/10);
-        this.hp = nivel*CONST_BAS;
+        this.ataque = nivel*50;
+        this.defesa = nivel*50;
+        this.inteligencia = nivel;
+        this.hp = nivel*50;
     }
     
     // Getters e setters para leitura e manipulação das características

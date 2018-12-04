@@ -67,6 +67,25 @@ public class Metodos {
         }
     }
     
+    // Método para exibir atributos
+    
+    protected void exibirAtributos(Heroi heroi) {
+        
+        System.out.println("\nNome: " + heroi.getNome());
+        System.out.println("\nClasse: " + heroi.getClasse().getNome());
+        System.out.println("Tipo de ataque: " + heroi.getClasse().getAtributo());
+        System.out.println("Resistente a: " + heroi.getClasse().getResistencia());
+        System.out.println("Vulneravel a: " + heroi.getClasse().getFraqueza());
+        System.out.println("\nArma: " + heroi.getArma().getNome());
+        System.out.println("Traje: " + heroi.getTraje().getNome());
+        System.out.println("\nHP: " + (int)heroi.getHp());
+        System.out.println("Ataque: " + heroi.getAtaque());
+        System.out.println("Defesa: " + heroi.getDefesa());
+        System.out.println("Inteligência: " + heroi.getInteligencia());
+        System.out.println("\nNível: " + heroi.getNivel());
+        System.out.println("Experiência: " + heroi.getExperiencia());
+    }
+    
     // Método para trocar de arma
     
     protected void trocarArma(Heroi heroi) {

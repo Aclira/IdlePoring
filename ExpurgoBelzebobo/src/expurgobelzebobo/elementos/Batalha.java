@@ -155,18 +155,20 @@ public class Batalha {
             int experiencia = nivelFase*EXP_BASE;          // Calcula a experiência ganha pelo herói
             metodos.atualizarNivel(heroi, experiencia);    // Atualiza o nível do herói
             
+            System.out.println();
             System.out.println(heroi.getNome() + " venceu!");
             System.out.println("Ganhou " + experiencia + " de experiência!");
             
             // Caso o nivel inicial do heroi seja diferente do nível atualizado, exibe uma mensagem
             
             if(heroi.getNivel() > nivelHeroi) {
-                System.out.println(heroi.getNome() + "subiu para o nível " + heroi.getNivel());
+                System.out.println(heroi.getNome() + " subiu para o nível " + heroi.getNivel());
             }
             
             dropItem(heroi, nivelFase, gerador); // Dropa um item aleatório
         } else {
             
+            System.out.println();
             System.out.println(heroi.getNome() + " foi derrotado(a)!");
             System.out.println("Fim de jogo!");
             

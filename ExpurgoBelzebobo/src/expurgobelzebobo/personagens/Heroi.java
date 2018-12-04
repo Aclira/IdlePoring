@@ -99,6 +99,10 @@ public class Heroi extends Personagem {
         
         danoGerado = (getAtaque()*getInteligencia()/defesa) + fatorSorte;
         
+        if(danoGerado < 1) {
+            danoGerado = 1;
+        }
+        
         if(erro) {
             danoGerado = danoGerado*fatorErro;
         } else if(critico) {

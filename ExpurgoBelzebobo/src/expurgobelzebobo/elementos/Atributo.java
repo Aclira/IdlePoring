@@ -13,9 +13,9 @@ public class Atributo {
     // Construtor da lista de atributos
     
     public Atributo() {
-        this.distancia = "distancia";
-        this.fisico = "fisico";
-        this.magico = "magico";
+        this.distancia = "Distância";
+        this.fisico = "Físico";
+        this.magico = "Mágico";
     }
 
     // Getters para leitura dos atributos

@@ -40,10 +40,10 @@ public class Bolsa {
             
             switch (itens.get(i).getNome()) {
                 case "Adrenalina":
-                    System.out.println("bônus de " + itens.get(i).getFatorAtaque()*100 + "% na defesa.");
+                    System.out.println("bônus de " + itens.get(i).getFatorDefesa()*100 + "% na defesa.");
                     break;
                 case "Estamina":
-                    System.out.println("bônus de " + itens.get(i).getFatorDefesa()*100 + "% no Ataque.");
+                    System.out.println("bônus de " + itens.get(i).getFatorAtaque()*100 + "% no Ataque.");
                     break;
                 default:
                     System.out.println("recupera " + itens.get(i).getFatorHp()*100 + "% do HP.");
