@@ -1,4 +1,4 @@
-package expurgobelzebobo.flyweight;
+package expurgobelzebobo.principal.flyweight;
 
 import expurgobelzebobo.elementos.racas.Raca;
 import expurgobelzebobo.personagens.Inimigo;

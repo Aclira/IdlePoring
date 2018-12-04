@@ -3,7 +3,7 @@
 package expurgobelzebobo.personagens;
 
 import expurgobelzebobo.elementos.racas.Raca;
-import expurgobelzebobo.flyweight.InterfaceFlyweight;
+import expurgobelzebobo.principal.flyweight.InterfaceFlyweight;
 
 import java.util.Random;
 

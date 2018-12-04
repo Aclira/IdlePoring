@@ -1,5 +1,5 @@
 
-package expurgobelzebobo.flyweight;
+package expurgobelzebobo.principal.flyweight;
 
 
 public interface InterfaceFlyweight {

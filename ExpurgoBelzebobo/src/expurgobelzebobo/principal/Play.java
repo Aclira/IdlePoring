@@ -5,7 +5,7 @@ package expurgobelzebobo.principal;
 import expurgobelzebobo.personagens.*;
 import expurgobelzebobo.elementos.Batalha;
 import expurgobelzebobo.elementos.racas.*;
-import expurgobelzebobo.flyweight.FlyweightFactory;
+import expurgobelzebobo.principal.flyweight.FlyweightFactory;
 import java.util.Random;
 
 import java.util.Scanner;
