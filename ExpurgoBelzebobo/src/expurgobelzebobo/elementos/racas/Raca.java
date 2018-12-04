@@ -7,7 +7,7 @@ import expurgobelzebobo.elementos.Habilidade;
 
 import java.util.ArrayList;
 
-public abstract class Raca { 
+public class Raca { 
     
     protected static Atributo atb = new Atributo();              // Carrega a lista de atributos
     private final ArrayList<Habilidade> hab = new ArrayList<>(); // Cria uma lista de habilidades

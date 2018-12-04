@@ -5,12 +5,23 @@ package expurgobelzebobo.principal;
 import expurgobelzebobo.personagens.*;
 import expurgobelzebobo.elementos.Batalha;
 import expurgobelzebobo.elementos.racas.*;
+import expurgobelzebobo.flyweight.FlyweightFactory;
+import static java.lang.Math.random;
+import java.util.Random;
 
 import java.util.Scanner;
 
 public class Play {
-
+  
+    static Random gerador = new Random(); 
+    static Ogro ogro = new Ogro();
+    static Elfo elfo = new Elfo();
+    static Planta planta = new Planta();
+    static Slime slime = new Slime();
+         
+    
     public static void main(String[] args) { 
+
         
         Scanner entrada = new Scanner(System.in); // Armazena as entradas do usuário
         
@@ -37,9 +48,9 @@ public class Play {
             switch (escolha) {
                 case 1:
                     {
-                        Ogro ogro = new Ogro();
-                        Inimigo inimigo_1 = new Inimigo(ogro, false, nivel);
-                        Batalha batalha = new Batalha(heroi, inimigo_1, nivel);
+                        
+                        Inimigo inimigo = (Inimigo)FlyweightFactory.getInimigo(getRandomRaca());
+                        Batalha batalha = new Batalha(heroi, inimigo, nivel);
                         break;
                     }
                 case 2:
@@ -64,5 +75,11 @@ public class Play {
                     break;
             }
         }
+    }    
+    private static Raca getRandomRaca(){
+        Raca racas[] = {elfo, ogro, planta, slime};
+        //return racas[(int)(Math.random()*racas.length)];
+        return racas[(int)gerador.nextInt(racas.length)];
     }
+    
 }
