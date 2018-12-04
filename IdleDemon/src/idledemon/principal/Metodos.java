@@ -191,22 +191,28 @@ public class Metodos {
             
             // Dados relativos ao item
         
-            int nivel = heroi.bolsa.lista.next(escolha-1).getNivel(); // Armazena o nível do item
-            int ataque = heroi.getAtaque();                           // Armazena o ataque do herói
-            int defesa = heroi.getDefesa();                           // Armazena a defesa do herói
-            double hp = heroi.getHp();                                // Armazena o hp do herói
-        
-            // Dados relativos ao herói
-        
+            int nivel = heroi.bolsa.lista.next(escolha-1).getNivel();             // Armazena o nível do item
             double ftAtaque = heroi.bolsa.lista.next(escolha-1).getFatorAtaque(); // Armaneza o bônus de ataque
             double ftDefesa = heroi.bolsa.lista.next(escolha-1).getFatorDefesa(); // Armazena o bônus de defesa
             double ftHp = heroi.bolsa.lista.next(escolha-1).getFatorHp();         // Armazena o recuperador de HP
+            
+            // Calcula os atributos base
+            
+            int ataqueBase = heroi.getNivel()*heroi.getConst(); // Ataque base
+            int defesaBase = heroi.getNivel()*heroi.getConst(); // Defesa base
+            int hpBase = heroi.getNivel()*heroi.getConst();     // HP base
         
+            // Dados relativos ao herói
+        
+            int ataque = heroi.getAtaque();                           // Armazena o ataque do herói
+            int defesa = heroi.getDefesa();                           // Armazena a defesa do herói
+            double hp = heroi.getHp();                                // Armazena o hp do herói
+                   
             // Atualização de atributos
         
-            heroi.setAtaque((int)(ataque + ftAtaque*nivel*ataque)); // Calcula o bônus de ataque do item
-            heroi.setDefesa((int)(defesa + ftDefesa*nivel*defesa)); // Calcula o bônus de defesa do item
-            heroi.setHp(hp + ftHp*nivel*hp);                        // Insere o fator de recuperação de hp
+            heroi.setAtaque((int)(ataque + ftAtaque*nivel*ataqueBase)); // Calcula o bônus de ataque do item
+            heroi.setDefesa((int)(defesa + ftDefesa*nivel*defesaBase)); // Calcula o bônus de defesa do item
+            heroi.setHp(hp + ftHp*nivel*hpBase);                    // Insere o fator de recuperação de hp
         
             heroi.bolsa.removerItem(heroi.bolsa.lista.next(escolha-1)); // Remove o item utilizado
         }
@@ -270,12 +276,12 @@ public class Metodos {
             int ataque = heroi.getAtaque() - heroi.getNivel()*heroi.getConst();
             int defesa = heroi.getDefesa() - heroi.getNivel()*heroi.getConst();
             
-            // Seta a experiência base para o novo vível
+            // Calcula os atributos base para o novo nível
             
-            heroi.setAtaque(heroi.getNivel()*heroi.getConst());
-            heroi.setDefesa(heroi.getNivel()*heroi.getConst());
-            heroi.setInteligencia(heroi.getNivel()*(heroi.getConst()/10));
-            heroi.setHp(heroi.getNivel()*heroi.getConst());
+            heroi.setAtaque(nivel*heroi.getConst());
+            heroi.setDefesa(nivel*heroi.getConst());
+            heroi.setInteligencia(nivel*(heroi.getConst()/10));
+            heroi.setHp(nivel*heroi.getConst());
             
             bonusClasse(heroi); // Acrescenta o bônus de classe
             

@@ -1,6 +1,9 @@
 // Alunos: Acza Lira Silva (201704940024)
 //         José de Senna Pereira Neto (201704940010)
 
+// Padrão flyweigth: aplicado na criação de novos inimigos para a batalha
+// Padrão iterator: aplicado na manipulação de objetos na bolsa do herói
+
 // Contém o corpo principal do programa
 
 package idledemon.principal;
