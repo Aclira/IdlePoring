@@ -204,8 +204,8 @@ public class Metodos {
         
             // Atualização de atributos
         
-            heroi.setAtaque((int)(ataque + ftDefesa*nivel*ataque)); // Calcula o bônus de ataque do item
-            heroi.setDefesa((int)(defesa + ftAtaque*nivel*defesa)); // Calcula o bônus de defesa do item
+            heroi.setAtaque((int)(ataque + ftAtaque*nivel*ataque)); // Calcula o bônus de ataque do item
+            heroi.setDefesa((int)(defesa + ftDefesa*nivel*defesa)); // Calcula o bônus de defesa do item
             heroi.setHp(hp + ftHp*nivel*hp);                        // Insere o fator de recuperação de hp
         
             heroi.bolsa.removerItem(heroi.bolsa.lista.next(escolha-1)); // Remove o item utilizado

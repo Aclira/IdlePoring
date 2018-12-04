@@ -58,7 +58,7 @@ public class Play {
             // Exibe um menu com as opções disponíveis no jogo
             
             System.out.println();
-            System.out.println("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
+            System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
             System.out.println(" O que deseja fazer?");
             System.out.println("1 - Nova batalha");
             System.out.println("2 - Desafia boss");
