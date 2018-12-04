@@ -61,82 +61,43 @@ public class Batalha {
         }
     }
     
-    // Método que gera novos objeto ao final da batalha
+    // Método que gera novos itens ao final da batalha
     
-    private void drop(Heroi heroi, int nivelFase, Random gerador) {
+    private void dropItem(Heroi heroi, int nivelFase, Random gerador) {
         
-        String nomeObjeto; // Armazenará o nome do objeto gerado
+        String nomeObjeto; // Armazena o nome o item dropado
         
         if(heroi.bolsa.espacoDisponivel()) {
             
-            // Caso a bolsa ainda tenha espaço disponível, um tipo de objeto é sorteado
-        
-            int sorteio = gerador.nextInt(3);
+            // Caso exista espaço na bolsa, sorteia um item para ser dropado ao final da batalha
             
-            switch (sorteio) {
-                case 0: // O objeto sorteado é uma arma: novo sorteio para definir qual arma será gerada
-                    sorteio = gerador.nextInt(3);
-                    switch (sorteio) {
-                        case 0: // A arma sorteada é um arco
-                            Arco arma = new Arco(true);
-                            heroi.bolsa.adicionarArma(arma);
-                            nomeObjeto = arma.getNome();
-                            break;
-                        case 1: // A arma sorteada é um cajado
-                            Cajado cajado = new Cajado(true);
-                            heroi.bolsa.adicionarArma(cajado);
-                            nomeObjeto = cajado.getNome();
-                            break;
-                        default: // A arma sorteada é uma espada
-                            Espada espada = new Espada(true);
-                            heroi.bolsa.adicionarArma(espada);
-                            nomeObjeto = espada.getNome();
-                            break;
-                    }   break;
-                case 1: // O objeto sorteado é um traje: novo sorteio para definir qual traje será gerado
-                    sorteio = gerador.nextInt(3);
-                    switch (sorteio) {
-                        case 0:  // O traje sorteado é uma armadura
-                            Armadura armadura = new Armadura(true);
-                            heroi.bolsa.adicionarTraje(armadura);
-                            nomeObjeto = armadura.getNome();
-                            break;
-                        case 1: // O traje sorteado é uma jaqueta
-                            Jaqueta jaqueta = new Jaqueta(true);
-                            heroi.bolsa.adicionarTraje(jaqueta);
-                            nomeObjeto = jaqueta.getNome();
-                            break;
-                        default: // O traje sorteado é uma túnica
-                            Tunica tunica = new Tunica(true);
-                            heroi.bolsa.adicionarTraje(tunica);
-                            nomeObjeto = tunica.getNome();
-                            break;
-                    }   break;
-                default: // O objeto sorteado é um item: novo sorteio para definir qual item será gerado
-                    sorteio = gerador.nextInt(3);
-                    switch (sorteio) {
-                        case 0:  // Item sorteado: adrenalina
-                            Adrenalina adrenalina = new Adrenalina(nivelFase, true);
-                            heroi.bolsa.adicionarItem(adrenalina);
-                            nomeObjeto = adrenalina.getNome();
-                            break;
-                        case 1: // Item sorteado: estamina
-                            Estamina estamina = new Estamina(nivelFase, true);
-                            heroi.bolsa.adicionarItem(estamina);
-                            nomeObjeto = estamina.getNome();
-                            break;
-                        default: // Item sorteado: poção
-                            Pocao pocao = new Pocao(nivelFase, true);
-                            heroi.bolsa.adicionarItem(pocao);
-                            nomeObjeto = pocao.getNome();
-                            break;
-                    }   break;
+            int sorteio = gerador.nextInt(4);
+            
+            switch(sorteio) {
+                case 0:  // Item sorteado: adrenalina
+                    Adrenalina adrenalina = new Adrenalina(nivelFase, true);
+                    heroi.bolsa.adicionarItem(adrenalina);
+                    nomeObjeto = adrenalina.getNome();
+                    break;
+                case 1: // Item sorteado: estamina
+                    Estamina estamina = new Estamina(nivelFase, true);
+                    heroi.bolsa.adicionarItem(estamina);
+                    nomeObjeto = estamina.getNome();
+                    break;
+                case 3: // Item sorteado: poção
+                    Pocao pocao = new Pocao(nivelFase, true);
+                    heroi.bolsa.adicionarItem(pocao);
+                    nomeObjeto = pocao.getNome();
+                    break;
+                default: // Não encontrou nenhum item
+                    nomeObjeto = "Nada";
+                    break;
             }
             
-            System.out.println("Encontrou " + nomeObjeto + "!"); // Mensagem informando o objeto encontrado
+            System.out.println("Encontrou " + nomeObjeto + "!"); // Mensagem informando o que foi encontrado
         } else {
             
-            // Caso não tenha espaço sobrando na bolsa, uma mensagem é exibida
+            // Caso não exista espaço sobrando na bolsa, uma mensagem informando o fato é exibida
             
             System.out.println("Bolsa cheia!");
         }
@@ -191,23 +152,23 @@ public class Batalha {
             int nivelHeroi = heroi.getNivel();    // Armazena o nível atual do herói
             int experiencia = nivelFase*EXP_BASE; // Calcula a experiência ganha pelo herói
             heroi.atualizarNivel(experiencia);    // Atualiza o nível do herói
-                
+            
             System.out.println(heroi.getNome() + " venceu!");
-            System.out.println("Ganhou " + "10" + " de experiência!");
-                
+            System.out.println("Ganhou " + experiencia + " de experiência!");
+            
             // Caso o nivel inicial do heroi seja diferente do nível atualizado, exibe uma mensagem
-                
+            
             if(heroi.getNivel() > nivelHeroi) {
                 System.out.println(heroi.getNome() + "subiu para o nível " + heroi.getNivel());
             }
-                
-            drop(heroi, nivelFase, gerador);
+            
+            dropItem(heroi, nivelFase, gerador); // Dropa um item aleatório
         } else {
             
             System.out.println(heroi.getNome() + " foi derrotado(a)!");
             System.out.println("Fim de jogo!");
             
-            System.exit(0); // Encerra a aplicação
+            System.exit(0); // Força o encerramento da aplicação
         }
     }
     

@@ -120,30 +120,6 @@ public class Heroi extends Personagem {
         }
     }
     
-    // Método para trocar arma
-    
-    public void trocarArma(Arma arma) {
-        
-        Arma armaAtual = this.arma;     // Armazena temporariamente a arma atual
-        this.arma = arma;               // Substitui a arma atual pela nova
-        bolsa.removerArma(arma);        // Remove a nova arma da bolsa
-        bolsa.adicionarArma(armaAtual); // Adiciona a arma atual a bolsa
-        
-        bonusEquipamento(this.arma, this.traje); // Calcula o bônus para o aquipamento atual
-    }
-    
-    // Método para trocar traje
-    
-    public void trocarTraje(Traje traje) {
-        
-        Traje trajeAtual = this.traje;    // Armazena temporariamente o traje atual
-        this.traje = traje;               // Substitui o traje atual pelo novo
-        bolsa.removerTraje(traje);        // Remove o novo traje da bolsa
-        bolsa.adicionarTraje(trajeAtual); // Adiciona o traje atual a bolsa
-        
-        bonusEquipamento(this.arma, this.traje); // Calcula o bônus para o aquipamento atual
-    }
-    
     // Método para usar item
     
     public void usarItem(Item item) {

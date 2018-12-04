@@ -10,7 +10,7 @@ public class Bolsa {
     
     private int tamanho; // Numero máximo de itens que a bolsa é capaz de comportar
     
-    // Lista de itens que a bolsa pode comportar
+    // Listas de itens que a bolsa pode comportar
     
     private final ArrayList<Arma> armas = new ArrayList<>();
     private final ArrayList<Item> itens = new ArrayList<>();
@@ -30,74 +30,77 @@ public class Bolsa {
     
     // Métodos para manipulação dos objetos da bolsa
     
-    // Adicionar uma arma na lista
+    // Adicionar e remover uma arma da bolsa
     
     public void adicionarArma(Arma arma) {
         armas.add(arma);
     }
     
-    // Remover uma arma da lista
-    
     public void removerArma(Arma arma) {
         armas.remove(arma);
     }
     
-    // Adicionar um item na lista
+    // Adicionar e remover um item da bolsa
     
     public void adicionarItem(Item item) {
         itens.add(item);
     }
     
-    // Remover um item da lista
-    
     public void removerItem(Item item) {
         itens.remove(item);
     }
     
-    // Adicionar um traje na lista
+    // Adicionar e remover um traje da bolsa
     
     public void adicionarTraje(Traje traje) {
         trajes.add(traje);
     }
     
-    // Remover um traje da lista
-    
     public void removerTraje(Traje traje) {
         trajes.remove(traje);
     }
     
-    // Método para verificar a quantidade de objetos na bolsa
+    // Métodos para exibir o conteúdo da bolsa
+    
+    // Armas
+    
+    public void exibirArmas() {
+        for(int i = 0; i < armas.size(); i++) {
+            System.out.println(armas.get(i).getNome());
+        }
+    }
+    
+    // Trajes
+    
+    public void exibirTrajes() {
+        for(int i = 0; i < trajes.size(); i++) {
+            System.out.println(trajes.get(i).getNome());
+        }
+    }
+    
+    // Itens
+    
+    public void exibirItens() {
+        for(int i = 0; i < itens.size(); i++) {
+            System.out.println(itens.get(i).getNome() + " (" + itens.get(i).getNivel() + ").");
+        }
+    }
+    
+    // Todos
+    
+    public void exibirObjetos() {
+        exibirArmas();
+        exibirTrajes();
+        exibirItens();
+    }
+    
+    // Verifica se ainda existe espaço disponível na bolsa
     
     private int quantidadeObjetos() {
         return armas.size() + itens.size() + trajes.size();
     }
     
-    // Método para verificar se a bolsa ainda tem espaço disponível
-    
     public boolean espacoDisponivel() {
         return quantidadeObjetos() < tamanho;
-    }
-    
-    // Exibe o conteúdo da bolsa
-    
-    public void exibirObjetos() {
-        
-        // Exibe as armas
-        
-        for(int i = 0; i < armas.size(); i++) {
-            System.out.println(armas.get(i).getNome());
-        }
-        
-        // Exibe os trajes
-        
-        for(int i = 0; i < trajes.size(); i++) {
-            System.out.println(trajes.get(i).getNome());
-        }
-        
-        // Exibe os itens
-        
-        for(int i = 0; i < itens.size(); i++) {
-            System.out.println(itens.get(i).getNome() + " (" + itens.get(i).getNivel() + ").");
-        }
     }
 }
