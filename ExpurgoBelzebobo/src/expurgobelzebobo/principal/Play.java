@@ -16,19 +16,26 @@ public class Play {
     
     // Inicializa as instâncias base das raças
     
-    static Ogro ogro = new Ogro();
-    static Elfo elfo = new Elfo();
-    static Planta planta = new Planta();
-    static Slime slime = new Slime();
+    
+
     
     // Método para selecionar uma raça aleatória
-    
-    private static Raca getRandomRaca(){
-        Raca racas[] = {elfo, ogro, planta, slime};
+    private static Raca getRandomRaca(Raca racas[]){
+        //Raca racas[] = {elfo, ogro, planta, slime};
         return racas[gerador.nextInt(racas.length)];
     }
     
     public static void main(String[] args) { 
+        int nivel = 1;
+        
+        
+        Ogro ogro = new Ogro();
+        Elfo elfo = new Elfo();
+        Planta planta = new Planta();
+        Slime slime = new Slime();
+        
+
+        
 
         Scanner entrada = new Scanner(System.in); // Armazena as entradas do usuário
         Metodos metodos = new Metodos();          // Instancia a classe métodos
@@ -38,7 +45,7 @@ public class Play {
         System.out.println("Bem vindo ao Idle Demon!"); // Mensagem inicial
         Heroi heroi = metodos.criarHeroi();             // Cria um nome herói
         boolean jogar = true;                           // Seta a variável de controle do laço principal
-        int nivel = 1;                                  // Seta o nível inicial dos inimigos como 1
+                                          // Seta o nível inicial dos inimigos como 1
         
         while(jogar) {
             
@@ -56,11 +63,15 @@ public class Play {
             System.out.print("Escolha: ");
             
             int escolha = entrada.nextInt();
+
             
             switch (escolha) {
                 case 1:
-                    Inimigo inimigo_1 = (Inimigo)FlyweightFactory.getInimigo(getRandomRaca());
+                    Raca[] racas = {ogro, elfo, planta, slime};
+                    Inimigo inimigo_1 = (Inimigo)FlyweightFactory.getInimigo(getRandomRaca(racas));
                     Batalha batalhaNormal = new Batalha(heroi, inimigo_1, nivel);
+                    System.out.println(heroi.getExperiencia());
+                    inimigo_1.setHp(nivel*50);
                     break;
                 case 2:
                     System.out.println("\nDEMÔNIO APARECEU !!");
