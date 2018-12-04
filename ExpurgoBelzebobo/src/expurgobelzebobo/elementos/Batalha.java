@@ -2,12 +2,12 @@
 
 package expurgobelzebobo.elementos;
 
+import expurgobelzebobo.principal.Metodos;
+
 import expurgobelzebobo.personagens.Heroi;
 import expurgobelzebobo.personagens.Inimigo;
 
-import expurgobelzebobo.elementos.armas.*;
 import expurgobelzebobo.elementos.itens.*;
-import expurgobelzebobo.elementos.trajes.*;
 
 import java.util.Random;
 
@@ -114,14 +114,14 @@ public class Batalha {
         try {
             Thread.sleep(gerador.nextInt(3000)); // Aguarda até 3 segundos antes de exibir as mensagens
         } catch(InterruptedException x) { }
-                
+        
+        System.out.println();
         System.out.print(inimigo.getNome() + " usa " + nomeHabilidade);
         System.out.println(": " + tipoAtaque(inimigo.isBoss(), fErro, fCritico));
         System.out.println("Dano infligido: " + danoInfligido + ".");
-            
+        
         System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
-        System.out.print(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp());
-        System.out.println("\n");
+        System.out.println(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp());
     }
     
     // Chama o método de ataque do herói e gera mensagens pertinentes ao ataque
@@ -133,25 +133,27 @@ public class Batalha {
         try {
             Thread.sleep(gerador.nextInt(3000)); // Aguarda até 3 segundos antes de exibir as mensagens
         } catch(InterruptedException x) { }
-            
+        
+        System.out.println();
         System.out.print(heroi.getNome() + " usa " + heroi.getArma().getNome());
         System.out.println(": " + tipoAtaque(fErro, fCritico));
         System.out.println("Dano infligido: " + danoInfligido + ".");
-            
+        
         System.out.print("HP de " + heroi.getNome() + ": " + (int)heroi.getHp() + ".");
-        System.out.print(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp());
-        System.out.println("\n");
+        System.out.println(" HP de " + inimigo.getNome() + ": " + (int)inimigo.getHp());
     }
     
     // Chama o método de atualização de nível do herói e exibe mensagens pertinentes ao final da batalha
     
     private void finalBatalha(Heroi heroi, int nivelFase, Random gerador) {
         
+        Metodos metodos = new Metodos();
+        
         if(heroi.getHp() > 0) {
                 
-            int nivelHeroi = heroi.getNivel();    // Armazena o nível atual do herói
-            int experiencia = nivelFase*EXP_BASE; // Calcula a experiência ganha pelo herói
-            heroi.atualizarNivel(experiencia);    // Atualiza o nível do herói
+            int nivelHeroi = heroi.getNivel();             // Armazena o nível atual do herói
+            int experiencia = nivelFase*EXP_BASE;          // Calcula a experiência ganha pelo herói
+            metodos.atualizarNivel(heroi, experiencia);    // Atualiza o nível do herói
             
             System.out.println(heroi.getNome() + " venceu!");
             System.out.println("Ganhou " + experiencia + " de experiência!");
@@ -195,7 +197,7 @@ public class Batalha {
             
                 AtaqueHeroi(heroi, inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
             
-                if(heroi.getHp() > 0) {
+                if(inimigo.getHp() > 0) {
                     AtaqueInimigo(heroi,inimigo, fatorErro(gerador), fatorCritico(gerador), gerador);
                 }
             }

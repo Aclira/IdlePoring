@@ -36,17 +36,17 @@ public class Bolsa {
     
     public void exibirItens() {
         for(int i = 0; i < itens.size(); i++) {
-            System.out.print(i+1 + " - " + itens.get(i).getNome() + " (" + itens.get(i).getNivel() + "):");
+            System.out.print(i+1 + " - " + itens.get(i).getNome() + "(n" + itens.get(i).getNivel() + "): ");
             
             switch (itens.get(i).getNome()) {
                 case "Adrenalina":
-                    System.out.println("Bônus de " + itens.get(i).getFatorAtaque()*100 + "% no ataque.");
+                    System.out.println("bônus de " + itens.get(i).getFatorAtaque()*100 + "% na defesa.");
                     break;
                 case "Estamina":
-                    System.out.println("Bônus de " + itens.get(i).getFatorDefesa()*100 + "% na defesa.");
+                    System.out.println("bônus de " + itens.get(i).getFatorDefesa()*100 + "% no Ataque.");
                     break;
                 default:
-                    System.out.println("Recupera " + itens.get(i).getFatorHp()*100 + "% do HP.");
+                    System.out.println("recupera " + itens.get(i).getFatorHp()*100 + "% do HP.");
                     break;
             }
         }

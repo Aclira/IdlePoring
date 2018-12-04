@@ -5,7 +5,6 @@ package expurgobelzebobo.personagens;
 import expurgobelzebobo.elementos.Bolsa;
 import expurgobelzebobo.elementos.classes.Classe;
 import expurgobelzebobo.elementos.armas.Arma;
-import expurgobelzebobo.elementos.itens.Item;
 import expurgobelzebobo.elementos.trajes.Traje;
 
 import java.util.Random;
@@ -19,10 +18,6 @@ public class Heroi extends Personagem {
     private Traje traje;                    // Traje do herói
     private int experiencia = 0;            // Experiência do herói
     public final Bolsa bolsa = new Bolsa(); // Bolsa do herói
-    
-    // Experiência máxima do herói
-    
-    private final int EXP_MAX = 900;
     
     // Construtor para criação do herói
 
@@ -71,53 +66,8 @@ public class Heroi extends Personagem {
         return experiencia;
     }
 
-    private void setExperiencia(int experiencia) {
-        if(this.experiencia + experiencia >= EXP_MAX) {
-            this.experiencia = EXP_MAX;
-        } else {
-            this.experiencia = this.experiencia + experiencia;
-        }        
-    }
-    
-    // Método para atualizar o nível
-    
-    public void atualizarNivel(int experiencia) {
-        
-        setExperiencia(experiencia); // Adiciona a experiência recebida à experiência atual
-        
-        int nivel = (this.experiencia + 100)/100; // Calcula o nível para a experiência atual
-        
-        // Calcula a mudança nos atributos, caso o nível para a experiência atual seja maior que o nível atual
-        
-        if(nivel > getNivel()) {
-            
-            setNivel(nivel);
-            setAtaque(getAtaque() + CONST_BAS);
-            setDefesa(getDefesa() + CONST_BAS);
-            setInteligencia(getInteligencia() + (CONST_BAS/10));
-            setHp(getHp() + CONST_BAS);
-        }
-    }
-    
-    // Método para calcular os bônus de arma e traje
-    
-    private void bonusEquipamento(Arma arma, Traje traje) {
-        
-        int nivel = getNivel();       // Recebe o nivel atual do herói
-        int ataque = nivel*CONST_BAS; // Cacula o ataque base
-        int defesa = nivel*CONST_BAS; // Calcula a defesa base
-        
-        // Compara o atributo da classe com o atributo da arma para calcular o bônus de ataque
-        
-        if(classe.getAtributo().equals(arma.getAtributo())) {
-            setAtaque((int)(ataque + ataque*arma.getFatorAtaque()));
-        }
-        
-        // Compara o atributo da classe com o atributo do traje para calcular o bônus de defesa
-        
-        if(classe.getAtributo().equals(traje.getAtributo())) {
-            setDefesa((int)(defesa + defesa*traje.getFatorDefesa()));
-        }
+    public void setExperiencia(int experiencia) {
+        this.experiencia = this.experiencia + experiencia;
     }
     
     // Método de ataque
