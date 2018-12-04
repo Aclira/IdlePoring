@@ -48,14 +48,14 @@ public class Metodos {
                 Arco arco = new Arco(true);
                 Jaqueta jaqueta = new Jaqueta(true);
                 Heroi heroiArqueiro = new Heroi(arqueiro, arco, jaqueta, nome);
-                bonusClasse(heroiArqueiro);
+                bonusEquipamento(heroiArqueiro);
                 return heroiArqueiro;
             case 2:
                 Guerreiro guerreiro = new Guerreiro();
                 Espada espada = new Espada(true);
                 Armadura armadura = new Armadura(true);
                 Heroi heroiGuerreiro = new Heroi(guerreiro, espada, armadura, nome);
-                bonusClasse(heroiGuerreiro);
+                bonusEquipamento(heroiGuerreiro);
                 return heroiGuerreiro;
             default:
                 Mago mago = new Mago();
@@ -63,6 +63,7 @@ public class Metodos {
                 Tunica tunica = new Tunica(true);
                 Heroi heroiMago = new Heroi(mago, cajado, tunica, nome);
                 bonusClasse(heroiMago);
+                bonusEquipamento(heroiMago);
                 return heroiMago;
         }
     }
@@ -238,17 +239,23 @@ public class Metodos {
         heroi.setInteligencia((int)(inteligencia + fatorInteligencia*inteligencia));
     }
     
-    // Método para aplicar os bônus de arma e de traje: utilizado quando o jogador muda o equipamento
+    // Métodos para aplicar os bônus de arma e de traje: utilizado quando o jogador muda o equipamento
     
     private void bonusEquipamento(Heroi heroi) {
         
-        int nivel = heroi.getNivel();        // Recebe o nivel atual do herói
-        int ataque = nivel*heroi.getConst(); // Cacula o ataque base
-        int defesa = nivel*heroi.getConst(); // Calcula a defesa base
+        int ataque = heroi.getNivel()*heroi.getConst(); // Calcula o ataque base
+        int defesa = heroi.getNivel()*heroi.getConst(); // Calcula a defesa base
+        
+        heroi.setAtaque(ataque); // Seta o ataque base no herói
+        heroi.setDefesa(defesa); // Seta a defesa base no herói        
+        bonusClasse(heroi);      // Adiciona o bônus da classe
+        
+        ataque = heroi.getAtaque();
+        defesa = heroi.getDefesa();
         
         // Compara o atributo da classe com o atributo da arma para calcular o bônus de ataque
         
-        if(heroi.getClasse().getAtributo().equals(heroi.getTraje().getAtributo())) {
+        if(heroi.getClasse().getAtributo().equals(heroi.getArma().getAtributo())) {
             heroi.setAtaque((int)(ataque + ataque*heroi.getArma().getFatorAtaque()));
         }
         
