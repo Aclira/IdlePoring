@@ -82,6 +82,7 @@ public class Play {
                     System.out.print(" HP de " + heroi.getNome() + ": " + (int)heroi.getHp());
                     System.out.println(" HP de " + inimigo_1.getNome() + ": " + (int)inimigo_1.getHp());
                     Batalha batalhaNormal = new Batalha(heroi, inimigo_1, nivel);
+                    heroi.setHp(heroi.getNivel()*heroi.getConst());
                     break;
                 case 2:
                     Demonio demonio = new Demonio();
@@ -90,8 +91,13 @@ public class Play {
                     System.out.print("\nHP de " + heroi.getNome() + ": " + (int)heroi.getHp());
                     System.out.println(" HP de " + inimigo_2.getNome() + ": " + (int)inimigo_2.getHp());
                     Batalha batalhaBoss = new Batalha(heroi, inimigo_2, nivel);
-                    heroi.bolsa.setTamanho(nivel);
-                    nivel++;
+                    
+                    if(heroi.getHp() > 0) {
+                        heroi.bolsa.setTamanho(nivel);
+                        nivel++;
+                    }
+                    
+                    heroi.setHp(heroi.getNivel()*heroi.getConst());
                     break;
                 case 3:
                     metodos.exibirAtributos(heroi);
