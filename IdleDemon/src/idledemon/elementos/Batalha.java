@@ -168,8 +168,6 @@ public class Batalha {
             
             System.out.println();
             System.out.println(heroi.getNome() + " foi derrotado(a)!");
-            
-            heroi.setHp(heroi.getNivel()*heroi.getHp());
         }
     }
     
